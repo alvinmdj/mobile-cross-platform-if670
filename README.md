@@ -8,3 +8,4 @@ Working with Ionic CDN and vanilla JavaScript to create a simple BMI calculator.
 Working with Ionic, React.js and TypeScript to create a simple BMI calculator.
 
 ## Week 03 - Ionic & React.js & TypeScript (Part 2)
+Re-create a better project structure with components and add feature to change between cm/kg and ft/lbs to calculate the BMI.
