@@ -1,0 +1,18 @@
+.type-divider {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  font-size: 12px;
+  font-weight: 600;
+  color: gray;
+  margin-top: 15px;
+}
+
+.type-divider::before,
+.type-divider::after {
+  content: '';
+  height: 1px;
+  background-color: silver;
+  flex-grow: 1;
+  margin: 0 10px;
+}

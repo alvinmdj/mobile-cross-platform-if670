@@ -1,0 +1,37 @@
+.home-content {
+  --padding-bottom: 100px;
+}
+
+.hero-container {
+  position: relative;
+  color: white;
+}
+
+.hero-container .bottom-left {
+  position: absolute;
+  bottom: 36px;
+  left: 16px;
+  font-size: 26px;
+  font-weight: 600;
+  margin-right: 30%;
+}
+
+.hero-container .bottom-right {
+  position: absolute;
+  bottom: 36px;
+  right: 16px;
+  font-size: 14px;
+  font-weight: 700;
+  border-bottom: 3px solid #fff;
+  padding-bottom: 3px;
+}
+
+.center-fab {
+  position: absolute;
+  max-width: 200px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-bottom: 30px;
+  box-shadow: 0 8px 10px 0 rgba(0,0,0,0.2);
+  border-radius: 50%;
+}

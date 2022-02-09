@@ -1,0 +1,34 @@
+.guide-card {
+  display: flex;
+  height: 120px;
+  padding: 0;
+}
+
+.guide-img {
+  border-radius: 0 10px 10px 0;
+}
+
+.guide-title {
+  padding-top: 10px;
+  font-weight: 600;
+  color: rgb(82, 82, 82);
+}
+
+.guide-divider {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  font-size: 12px;
+  font-weight: 600;
+  color: gray;
+  margin: 15px 0;
+}
+
+.guide-divider::before,
+.guide-divider::after {
+  content: '';
+  height: 1px;
+  background-color: silver;
+  flex-grow: 1;
+  margin: 0 10px;
+}

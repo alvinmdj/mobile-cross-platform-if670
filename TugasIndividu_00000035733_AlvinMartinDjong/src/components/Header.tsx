@@ -6,6 +6,8 @@ import {
 import { searchOutline } from 'ionicons/icons'
 import React from 'react'
 
+import './Header.css'
+
 const Header: React.FC = () => {
   return (
     <IonHeader>
@@ -14,9 +16,8 @@ const Header: React.FC = () => {
           <IonMenuButton />
         </IonButtons>
         <IonButtons slot="end">
-          <IonButton routerLink='/page/Search' routerDirection='back' >
-            Search
-            &nbsp;
+          <IonButton strong mode='ios' routerLink='/page/Search' routerDirection='back'>
+            Search&nbsp;
             <IonIcon icon={searchOutline}></IonIcon>
           </IonButton>
         </IonButtons>

@@ -1,33 +1,40 @@
 import { 
+  IonButton,
   IonContent, 
   IonFab, 
   IonFabButton,
   IonIcon,
-  IonImg, 
+  IonImg,
   IonLabel
 } from '@ionic/react'
 import { qrCodeOutline } from 'ionicons/icons'
 import CookingGuides from './CookingGuides'
-import FoodTypes from './SearchByType'
+import SearchByTypes from './SearchByType'
+
+import './Home.css'
 
 const Home: React.FC = () => {
   return (
-    <IonContent fullscreen>
+    <IonContent class='home-content' fullscreen>
+      
+      <div className='hero-container'>
+        <IonImg src="/assets/hero.webp" />
+        <div className="bottom-left">Get your Joule. Be happy.</div>
+        <div className='bottom-right'>Explore</div>
+      </div>
 
-      <IonImg src="/assets/hero.webp" />
-
-      <FoodTypes />
+      <SearchByTypes />
 
       <CookingGuides />
 
-      <IonFab vertical="bottom" horizontal="center" slot="fixed">
-        <IonFabButton>
+      <IonFab class='center-fab' vertical="bottom" slot="fixed">
+        <IonButton  strong mode='ios' shape='round' className='center-fab'>
           <IonLabel>Search for Joule</IonLabel>
-        </IonFabButton>
+        </IonButton>
       </IonFab>
 
       <IonFab vertical="bottom" horizontal="end" slot="fixed">
-        <IonFabButton>
+        <IonFabButton size='small'>
           <IonIcon icon={qrCodeOutline}></IonIcon>
         </IonFabButton>
       </IonFab>

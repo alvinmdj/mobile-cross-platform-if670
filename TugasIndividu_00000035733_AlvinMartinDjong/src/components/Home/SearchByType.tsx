@@ -2,64 +2,64 @@ import {
   IonCard, 
   IonCardContent,
   IonCol, 
-  IonGrid, 
-  IonItemDivider, 
-  IonLabel, 
+  IonGrid,
   IonRow 
 } from '@ionic/react'
 import React from 'react'
+
+import './SearchByType.css'
 
 interface Types {
   name: string;
   image: string;
 }
 
-const FoodTypes: React.FC = () => {
-  const types: Types[] = [
-    {
-      'name': 'Pork',
-      'image': '',
-    },
-    {
-      'name': 'Game',
-      'image': '',
-    },
-    {
-      'name': 'Beef',
-      'image': '',
-    },
-    {
-      'name': 'Poultry',
-      'image': '',
-    },
-    {
-      'name': 'Lamb',
-      'image': '',
-    },
-    {
-      'name': 'Seafood',
-      'image': '',
-    },
-    {
-      'name': 'Vegetables',
-      'image': '',
-    },
-    {
-      'name': 'Desserts',
-      'image': '',
-    },
-    {
-      'name': 'Other',
-      'image': '',
-    },
-  ]
+const types: Types[] = [
+  {
+    'name': 'Pork',
+    'image': '',
+  },
+  {
+    'name': 'Game',
+    'image': '',
+  },
+  {
+    'name': 'Beef',
+    'image': '',
+  },
+  {
+    'name': 'Poultry',
+    'image': '',
+  },
+  {
+    'name': 'Lamb',
+    'image': '',
+  },
+  {
+    'name': 'Seafood',
+    'image': '',
+  },
+  {
+    'name': 'Vegetables',
+    'image': '',
+  },
+  {
+    'name': 'Desserts',
+    'image': '',
+  },
+  {
+    'name': 'Other',
+    'image': '',
+  },
+]
 
+const SearchByTypes: React.FC = () => {
   return (
     <>
       {/* Divider */}
-      <IonItemDivider>
-        <IonLabel>Search by Type</IonLabel>
-      </IonItemDivider>
+      <div className='type-divider'>
+        Search by Type
+      </div>
 
       {/* Types Grid */}
       <IonGrid>
@@ -79,4 +79,4 @@ const FoodTypes: React.FC = () => {
   )
 }
 
-export default FoodTypes
+export default SearchByTypes

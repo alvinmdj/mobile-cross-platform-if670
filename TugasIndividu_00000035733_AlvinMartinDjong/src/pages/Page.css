@@ -1,0 +1,13 @@
+ion-content {
+  --background: rgb(236, 236, 236);
+}
+
+ion-button {
+  --background: #fff;
+  --color: rgb(206, 150, 46);
+}
+
+ion-fab-button {
+  --background: #fff;
+  --color: rgb(54, 54, 54);
+}
