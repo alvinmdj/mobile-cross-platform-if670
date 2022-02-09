@@ -50,6 +50,7 @@ const App: React.FC = () => {
   const heightInputRef = useRef<HTMLIonInputElement>(null);
   const weightInputRef = useRef<HTMLIonInputElement>(null);
 
+  // set BMI category
   const bmiCategory = (bmi: number): string => {
     if (bmi < 18.5) return "Kurus";
     else if (bmi <= 24.9) return "Normal";
@@ -57,6 +58,7 @@ const App: React.FC = () => {
     else return "Obesitas";
   }
 
+  // calculate BMI
   const calculateBMI = () => {
     const enteredHeight = heightInputRef.current!.value;
     const enteredWeight = weightInputRef.current!.value;
@@ -68,8 +70,10 @@ const App: React.FC = () => {
     }
 
     if (calcUnits === 'cmkg') {
+      // bmi formula for cm/kg
       bmi = +enteredWeight / (+enteredHeight / 100) ** 2;
     } else {
+      // bmi formula for ft/lbs
       bmi = +enteredWeight / (+enteredHeight * 12) ** 2 * 703;
     }
 
@@ -78,6 +82,7 @@ const App: React.FC = () => {
     setCalculatedBMI(bmi);
   }
 
+  // reset inputs
   const resetInputs = () => {
     weightInputRef.current!.value = '';
     heightInputRef.current!.value = '';
@@ -85,11 +90,14 @@ const App: React.FC = () => {
     setCategory(undefined);
   }
 
+  // clear error
   const clearError = () => {
     setError(undefined)
   }
 
+  // handle calculation unit changes
   const selectCalcUnitHandler = (selectedValue: 'cmkg' | 'ftlbs') => {
+    // check if calculation unit changed, update refs value
     if (calcUnits !== selectedValue) {
       let height = heightInputRef.current!.value;
       let weight = weightInputRef.current!.value;
@@ -104,6 +112,8 @@ const App: React.FC = () => {
         }
       }
     }
+
+    // set current calculation unit to selected value
     setCalcUnits(selectedValue);
   }
 
