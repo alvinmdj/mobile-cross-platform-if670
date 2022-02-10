@@ -8,8 +8,11 @@ import {
   IonSegment, 
   IonSegmentButton,
   IonThumbnail,
+  useIonRouter,
 } from '@ionic/react'
-import React, { useState } from 'react'
+import { closeOutline } from 'ionicons/icons'
+import React, { useEffect, useRef, useState } from 'react'
+import { useHistory } from 'react-router'
 
 interface Item {
   title: string
@@ -136,13 +139,38 @@ const itemList: Item[] = [
 ]
 
 const Search: React.FC = () => {
+  const history = useHistory()
+
   const [searchText, setSearchText] = useState<string>('');
+
+  const searchRef = useRef<HTMLIonSearchbarElement>(null);
+
+  useEffect(() => {
+    setTimeout(() => searchRef.current?.setFocus(), 100)
+  }, [])
+
+  const handleCancle = () => {
+    setTimeout(() => {
+      history.push('/page/Home')
+    }, 100)
+  }
 
   return (
     <>
       <IonHeader>
         {/* Search bar */}
-        <IonSearchbar value={searchText} onIonChange={e => setSearchText(e.detail.value!)} />
+        <IonSearchbar
+          ref={searchRef}
+          mode='ios'
+          clearIcon={closeOutline}
+          showClearButton='always'
+          showCancelButton='always'
+          cancelButtonText='Cancel'
+          animated
+          value={searchText}
+          onIonCancel={handleCancle}
+          onIonChange={e => setSearchText(e.detail.value!)} 
+        />
 
         {/* Segments */}
         <IonSegment value={'all'}>
