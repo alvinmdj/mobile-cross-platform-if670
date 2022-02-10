@@ -1,3 +1,21 @@
+.type-card {
+  margin: 0;
+  text-align: center;
+}
+
+.type-thumbnail {
+  --border-radius: 50%;
+  display: block;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.type-content {
+  font-size: 12px;
+  font-weight: 600;
+}
+
 .type-divider {
   display: flex;
   align-items: center;
@@ -6,6 +24,7 @@
   font-weight: 600;
   color: gray;
   margin-top: 15px;
+  margin-bottom: 5px;
 }
 
 .type-divider::before,
