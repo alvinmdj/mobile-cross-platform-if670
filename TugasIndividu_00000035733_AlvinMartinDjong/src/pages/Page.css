@@ -2,6 +2,10 @@ ion-content {
   --background: rgb(236, 236, 236);
 }
 
+ion-menu {
+  --max-width: 210px;
+}
+
 ion-button {
   --background: #fff;
   --color: rgb(206, 150, 46);

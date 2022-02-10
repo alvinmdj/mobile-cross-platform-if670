@@ -9,5 +9,5 @@ ion-menu ion-item.selected {
 
 ion-menu ion-item ion-label {
   font-weight: 600;
-  /* color: #616e7e; */
+  --color: #616e7e;
 }
