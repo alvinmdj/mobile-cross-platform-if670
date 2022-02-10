@@ -27,8 +27,8 @@ const Home: React.FC = () => {
 
       <CookingGuides />
 
-      <IonFab class='center-fab' vertical="bottom" slot="fixed">
-        <IonButton  strong mode='ios' shape='round' className='center-fab'>
+      <IonFab className='center-fab' vertical="bottom" slot="fixed">
+        <IonButton className='search-fab-btn' strong mode='ios' shape='round'>
           <IonLabel>Search for Joule</IonLabel>
         </IonButton>
       </IonFab>

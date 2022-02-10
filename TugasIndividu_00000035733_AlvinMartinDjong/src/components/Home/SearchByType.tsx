@@ -69,11 +69,9 @@ const SearchByTypes: React.FC = () => {
             <IonCol sizeXs='4' key={t.name}>
               <IonCard className='type-card'>
                 <IonThumbnail className='type-thumbnail'>
-                  <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
+                  <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" alt={t.name} />
                 </IonThumbnail>
-                <IonCardContent class='type-content'>
-                  <p>{t.name}</p>
-                </IonCardContent>
+                <p className='type-content'>{t.name}</p>
               </IonCard>
             </IonCol>
           ))}
