@@ -22,6 +22,11 @@ Repository for Mobile Cross Platform Programming assignments (IF670-A)
   
   Re-create a better project structure with components and add feature to change between cm/kg and ft/lbs to calculate the BMI.
 
+## Requirements
+- [Node.js](https://nodejs.org/)
+- [NPM](https://www.npmjs.com/)
+- [Ionic CLI](https://ionicframework.com/docs/)
+
 ## Get Started
 - Clone this repo:
 ```sh
@@ -36,6 +41,11 @@ cd mobile-cross-platform-if670/Week<xx>_000000035733_AlvinMartinDjong
 - Install dependencies:
 ```sh
 npm install
+```
+
+- Run (development):
+```sh
+ionic serve
 ```
 
 ## Useful Commands
