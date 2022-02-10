@@ -36,6 +36,7 @@
   --background-activated-opacity: 0.1;
   --background-focused: #616e7e;
   --background-focused-opacity: 0.1;
+  --background-hover-opacity: 0.05;
   box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
   border-radius: 50px;
 }

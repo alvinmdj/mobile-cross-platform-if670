@@ -1,6 +1,5 @@
 import {
   IonContent,
-  IonHeader,
   IonItem,
   IonItemDivider,
   IonLabel,
@@ -8,11 +7,13 @@ import {
   IonSegment, 
   IonSegmentButton,
   IonThumbnail,
-  useIonRouter,
+  IonToolbar,
 } from '@ionic/react'
 import { closeOutline } from 'ionicons/icons'
 import React, { useEffect, useRef, useState } from 'react'
 import { useHistory } from 'react-router'
+
+import './Search.css'
 
 interface Item {
   title: string
@@ -157,7 +158,7 @@ const Search: React.FC = () => {
 
   return (
     <>
-      <IonHeader>
+      <IonToolbar className='search-toolbar'>
         {/* Search bar */}
         <IonSearchbar
           ref={searchRef}
@@ -173,7 +174,7 @@ const Search: React.FC = () => {
         />
 
         {/* Segments */}
-        <IonSegment value={'all'}>
+        <IonSegment mode='ios' className='search-segment' value={'all'}>
           <IonSegmentButton value="all">
             <IonLabel>All</IonLabel>
           </IonSegmentButton>
@@ -184,7 +185,7 @@ const Search: React.FC = () => {
             <IonLabel>ChefSteps.com</IonLabel>
           </IonSegmentButton>
         </IonSegment>
-      </IonHeader>
+      </IonToolbar>
 
       <IonContent fullscreen>
         {/* Divider */}

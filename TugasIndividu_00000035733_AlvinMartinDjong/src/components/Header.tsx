@@ -16,7 +16,7 @@ const Header: React.FC = () => {
           <IonMenuButton />
         </IonButtons>
         <IonButtons slot="end">
-          <IonButton strong mode='ios' routerLink='/page/Search' routerDirection='back'>
+          <IonButton class='search-btn' strong mode='ios' routerLink='/page/Search' routerDirection='back'>
             Search&nbsp;
             <IonIcon icon={searchOutline}></IonIcon>
           </IonButton>
