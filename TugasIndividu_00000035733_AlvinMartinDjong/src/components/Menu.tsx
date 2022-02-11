@@ -8,7 +8,7 @@ import {
   IonMenuToggle,
 } from '@ionic/react';
 import { useLocation } from 'react-router-dom';
-import { colorWandOutline, helpCircleOutline, homeOutline, settingsOutline } from 'ionicons/icons';
+import { chatbox, colorWandOutline, helpCircleOutline, homeOutline, openOutline, settingsOutline } from 'ionicons/icons';
 
 import './Menu.css';
 
@@ -65,6 +65,15 @@ const Menu: React.FC = () => {
             );
           })}
         </IonList>
+        <div className='chatbox'>
+          <IonIcon className='chatbox-icon' icon={chatbox} />
+          <div className='chatbox-item'>
+            <p>Get your claws around Joule today!</p>
+            <a target='_blank' href="https://www.chefsteps.com/joule">Check it out</a>
+            {' '}
+            <IonIcon className='open-icon' icon={openOutline} />
+          </div>
+        </div>
         <img className='crab-icon' src="/assets/crab.png" alt="Crab" />
       </IonContent>
     </IonMenu>

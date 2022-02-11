@@ -1,3 +1,7 @@
+.search-btn::part(native) {
+  font-weight: bold;
+}
+
 .search-btn {
   --background-hover-opacity: 0%;
 }
