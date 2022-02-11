@@ -1,3 +1,16 @@
+ion-segment-button::part(native) {
+  font-weight: bold;
+}
+
+ion-segment-button {
+  /* --indicator-box-shadow: 0; */
+  --border-style: none;
+  --indicator-color: gray;
+  --indicator-height: 2px;
+  --indicator-transform: translateY(40px);
+  --color: gray;
+}
+
 .search-toolbar {
   padding-top: 15px;
 }
@@ -5,11 +18,12 @@
 .search-bar {
   /* --background: #fff; */
   --cancel-button-color: rgb(153, 153, 153);
+  --placeholder-font-weight: bold;
 }
 
-/* .search-segment {
-  
-} */
+.search-segment {
+  --background: #fff;
+}
 
 .search-card {
   display: flex;

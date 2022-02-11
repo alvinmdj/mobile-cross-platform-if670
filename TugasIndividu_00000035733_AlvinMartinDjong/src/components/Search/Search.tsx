@@ -198,7 +198,7 @@ const Search: React.FC = () => {
         />
 
         {/* Segments */}
-        <IonSegment className='search-segment' value={segment} onIonChange={e => setSegment(e.detail.value)}>
+        <IonSegment className='search-segment' mode='ios' value={segment} onIonChange={e => setSegment(e.detail.value)}>
           <IonSegmentButton value="all">
             <IonLabel>All</IonLabel>
           </IonSegmentButton>
