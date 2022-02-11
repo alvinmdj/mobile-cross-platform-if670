@@ -22,7 +22,7 @@ interface Item {
 }
 
 // Sample item list (keyword: chicken)
-const guideList: Item[] = [
+const itemList: Item[] = [
   {
     title: 'Ultimate Chicken Breast',
     segment: 'joule',
@@ -71,8 +71,6 @@ const guideList: Item[] = [
     category: 'Visual Doneness Guides',
     image: '',
   },
-]
-const justList = [
   {
     title: 'Chicken Leg',
     segment: 'joule',
@@ -108,8 +106,6 @@ const justList = [
     time: '1 hour - 1 hour 30 minutes',
     image: '',
   },
-]
-const chefStepList = [
   {
     title: "Can't-F***-It-Up Fried Chicken",
     segment: 'chefstep',
@@ -162,21 +158,12 @@ const Search: React.FC = () => {
   }
 
   // Filter item list by search text & segment
-  const handleSearch = (itemList: Item[]) => {
+  const handleSearch = () => {
     return itemList.filter((item) => (
       item.title.toLowerCase().includes(searchText.toLowerCase())
     )).filter((searchItem) => (
       searchItem.segment === segment || segment === 'all'
     ))
-  }
-
-  const showSectionDivider = (itemList: Item[]) => {
-    if (searchText === '') 
-      return false
-    else if (handleSearch(itemList).length === 0)
-      return false
-    else 
-      return true
   }
 
   return (
@@ -212,13 +199,13 @@ const Search: React.FC = () => {
       </IonToolbar>
 
       <IonContent fullscreen>
-        {/* Visual Doneness Guides Section */}
-        {showSectionDivider(guideList) && 
+        {/* Section Divider */}
+        {/* {handleSearch().some(item => item.category === "Visual Doneness Guides") &&  */}
         <div className='section-divider'>
           <p>Visual Doneness Guides</p>
-        </div>}
-        {/* Search Result for Visual Doneness Guides */}
-        {searchText && handleSearch(guideList).map(item => {
+        </div>
+
+        {searchText && handleSearch().map(item => {
           return (
             <div key={item.title}>
               <IonCard className='search-card'>
@@ -236,13 +223,11 @@ const Search: React.FC = () => {
           )
         })}
 
-        {/* Just Time & Temp Section */}
-        {showSectionDivider(justList) && 
         <div className='section-divider'>
           <p>Just Time & Temp</p>
-        </div>}
-        {/* Search Result for Visual Doneness Guides */}
-        {searchText && handleSearch(justList).map(item => {
+        </div>
+
+        {searchText && handleSearch().map(item => {
           return (
             <div key={item.title}>
               <IonCard className='search-card'>
@@ -259,14 +244,13 @@ const Search: React.FC = () => {
             </div>
           )
         })}
-
-        {/* ChefStep.com Section */}
-        {showSectionDivider(chefStepList) && 
+        
         <div className='section-divider'>
           <p>ChefStep.com</p>
-        </div>}
-        {/* Search Result for ChefStep.com */}
-        {searchText && handleSearch(chefStepList).map(item => {
+        </div>
+
+        {/* Search Result */}
+        {searchText && handleSearch().map(item => {
           return (
             <div key={item.title}>
               <IonCard className='search-card'>

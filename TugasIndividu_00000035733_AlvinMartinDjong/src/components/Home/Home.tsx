@@ -23,7 +23,7 @@ const Home: React.FC = () => {
     setTimeout(() => {
       setShowSplashScreen(false);
     }, 3000);
-  }, [])
+  }, [setShowSplashScreen])
 
   if (showSplashScreen) {
     return <SplashScreen />
