@@ -7,9 +7,9 @@ import {
   IonMenu,
   IonMenuToggle,
 } from '@ionic/react';
-
 import { useLocation } from 'react-router-dom';
 import { colorWandOutline, helpCircleOutline, homeOutline, settingsOutline } from 'ionicons/icons';
+
 import './Menu.css';
 
 interface AppPage {
@@ -45,7 +45,7 @@ const Menu: React.FC = () => {
   const location = useLocation();
 
   return (
-    <IonMenu contentId="main" type="push">
+    <IonMenu menuId='main-menu' contentId="main" type="push">
       <IonContent>
         <IonList id="item-list">
           {appPages.map((appPage, index) => {
