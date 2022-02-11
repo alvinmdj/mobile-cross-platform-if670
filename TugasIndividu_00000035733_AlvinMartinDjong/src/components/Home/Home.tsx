@@ -7,13 +7,28 @@ import {
   IonImg,
   IonLabel
 } from '@ionic/react'
+import { useEffect } from 'react'
 import { qrCodeOutline } from 'ionicons/icons'
+
+import { useSplashScreen } from '../../contexts/SplashScreenContext'
+import SplashScreen from '../SplashScreen'
 import CookingGuides from './CookingGuides'
 import SearchByTypes from './SearchByType'
-
 import './Home.css'
 
 const Home: React.FC = () => {
+  const { showSplashScreen, setShowSplashScreen} = useSplashScreen()
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowSplashScreen(false);
+    }, 3000);
+  }, [])
+
+  if (showSplashScreen) {
+    return <SplashScreen />
+  }
+
   return (
     <IonContent class='home-content' fullscreen>
       

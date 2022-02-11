@@ -4,9 +4,13 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
+import { SplashScreenProvider } from './contexts/SplashScreenContext';
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <SplashScreenProvider>
+      <App />
+    </SplashScreenProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

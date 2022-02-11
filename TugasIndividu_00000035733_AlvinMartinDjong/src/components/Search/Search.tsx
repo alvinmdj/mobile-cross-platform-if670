@@ -1,12 +1,10 @@
 import {
+  IonCard,
   IonContent,
-  IonItem,
-  IonItemDivider,
   IonLabel,
   IonSearchbar, 
   IonSegment, 
   IonSegmentButton,
-  IonThumbnail,
   IonToolbar,
 } from '@ionic/react'
 import { closeOutline } from 'ionicons/icons'
@@ -143,6 +141,7 @@ const Search: React.FC = () => {
   const history = useHistory()
 
   const [searchText, setSearchText] = useState<string>('');
+  const [segment, setSegment] = useState<'all' | 'joule' | 'chefstep'>('all');
 
   const searchRef = useRef<HTMLIonSearchbarElement>(null);
 
@@ -156,11 +155,18 @@ const Search: React.FC = () => {
     }, 100)
   }
 
+  const handleSearch = () => {
+    return itemList.filter((item) => (
+      item.title.toLowerCase().includes(searchText.toLowerCase())
+    ))
+  }
+
   return (
     <>
       <IonToolbar className='search-toolbar'>
         {/* Search bar */}
         <IonSearchbar
+          className='search-bar'
           ref={searchRef}
           mode='ios'
           clearIcon={closeOutline}
@@ -174,7 +180,7 @@ const Search: React.FC = () => {
         />
 
         {/* Segments */}
-        <IonSegment mode='ios' className='search-segment' value={'all'}>
+        <IonSegment className='search-segment' value={segment}>
           <IonSegmentButton value="all">
             <IonLabel>All</IonLabel>
           </IonSegmentButton>
@@ -188,22 +194,24 @@ const Search: React.FC = () => {
       </IonToolbar>
 
       <IonContent fullscreen>
-        {/* Divider */}
-        <IonItemDivider>
-          <IonLabel>Visual Doneness Guides</IonLabel>
-        </IonItemDivider>
+        {/* Section Divider */}
+        {/* <div className='section-divider'>
+          <p>Visual Doneness Guides</p>
+        </div> */}
 
         {/* Search Result */}
-        {itemList.map(item => (
-          <IonItem key={item.title}>
-            <IonThumbnail slot="start">
-              <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" alt={item.title} />
-            </IonThumbnail>
-            <IonLabel>
-              <h2>{item.title}</h2>
-              <p>{item.time ? item.time : item.category}</p>
-            </IonLabel>
-          </IonItem>
+        {searchText && handleSearch().map(item => (
+          <IonCard className='search-card' key={item.title}>
+            <img
+              className={item.category !== 'Visual Doneness Guides' ? 'rounded-image' : ''} 
+              src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" alt={item.title} 
+            />
+            <div className='search-item'>
+              <span className='search-title'>{item.title}</span>
+              <br />
+              <span className='search-category'>{item.time ? item.time : item.category}</span>
+            </div>
+          </IonCard>
         ))}
       </IonContent>
     </>

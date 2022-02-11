@@ -65,6 +65,7 @@ const Menu: React.FC = () => {
             );
           })}
         </IonList>
+        <img className='crab-icon' src="/assets/crab.png" alt="Crab" />
       </IonContent>
     </IonMenu>
   );
