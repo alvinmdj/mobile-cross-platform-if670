@@ -56,7 +56,7 @@ const CookingGuides: React.FC = () => {
       {guideList.map(guide => (
         <IonCard button key={guide.title}>
           <div className='guide-card'>
-            <img className='guide-img' src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" alt={guide.title} />
+            <img className='guide-img' src="/assets/guide-image.webp" alt={guide.title} />
             <IonItem className='guide-card-item' lines='none'>
               <p className='guide-title'>{guide.title}</p>
             </IonItem>

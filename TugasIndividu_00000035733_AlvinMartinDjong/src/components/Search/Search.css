@@ -44,12 +44,16 @@ ion-segment-button {
 }
 
 .search-category {
-  font-size: 12px;
+  font-size: 9px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .section-divider {
   margin-left: 0.5rem;
   color: gray;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .rounded-image {

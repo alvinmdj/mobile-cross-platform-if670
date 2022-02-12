@@ -13,7 +13,9 @@ const SearchCard: React.FC<Props> = ({ item }) => {
         <div className='search-card'>
           <img
             className={item.category !== 'Visual Doneness Guides' ? 'rounded-image' : ''} 
-            src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" alt={item.title} 
+            src={item.image ? item.image : "https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"}
+            alt={item.title}
+            width={80}
           />
           <div className='search-item'>
             <span className='search-title'>{item.title}</span>

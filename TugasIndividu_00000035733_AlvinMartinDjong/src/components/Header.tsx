@@ -21,7 +21,7 @@ const Header: React.FC = () => {
             mode='ios'
             class='search-btn'
             routerLink='/page/Search'
-            routerDirection='back'
+            routerDirection='none'
           >
             Search&nbsp;
             <IonIcon icon={searchOutline} />
