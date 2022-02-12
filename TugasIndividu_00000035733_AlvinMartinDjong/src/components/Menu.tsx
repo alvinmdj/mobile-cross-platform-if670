@@ -69,7 +69,7 @@ const Menu: React.FC = () => {
           <IonIcon className='chatbox-icon' icon={chatbox} />
           <div className='chatbox-item'>
             <p>Get your claws around Joule today!</p>
-            <a className='chatbox-link' target='_blank' href="https://www.chefsteps.com/joule">Check it out</a>
+            <a className='chatbox-link' target='_blank' rel="noreferrer" href="https://www.chefsteps.com/joule">Check it out</a>
             {' '}
             <IonIcon className='open-icon' icon={openOutline} />
           </div>
