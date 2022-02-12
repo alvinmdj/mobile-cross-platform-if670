@@ -8,7 +8,11 @@ Repository for Mobile Cross Platform Programming assignments (IF670-A)
 
 - **Tugas Individu**
   
-  First assignment for theory class, create a Joule (mobile application) clone.
+  First assignment for theory class, create a Joule (mobile application) clone, including the splash screen, sidebar, home page, and search page. The search page is functioning with dummy data (hint: type 'chicken').
+  
+  **Live demo**: https://jouleclone.vercel.app/
+  
+  **Note**: Please open it in mobile view, it's not yet optimized for large screen view :)
 
 - **Week 01 - Understanding Ionic Basic**
 
