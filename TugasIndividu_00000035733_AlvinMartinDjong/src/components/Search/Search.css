@@ -3,7 +3,6 @@ ion-segment-button::part(native) {
 }
 
 ion-segment-button {
-  /* --indicator-box-shadow: 0; */
   --border-style: none;
   --indicator-color: gray;
   --indicator-height: 2px;
@@ -16,7 +15,6 @@ ion-segment-button {
 }
 
 .search-bar {
-  /* --background: #fff; */
   --cancel-button-color: rgb(153, 153, 153);
   --placeholder-font-weight: bold;
 }

@@ -1,5 +1,4 @@
 import {
-  IonCard,
   IonContent,
   IonLabel,
   IonSearchbar, 
@@ -12,8 +11,10 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useHistory } from 'react-router'
 
 import './Search.css'
+import SearchCard from './SearchCard'
 
-interface Item {
+// Export for SearchCard component
+export interface Item {
   title: string
   segment: string
   category: string
@@ -171,16 +172,17 @@ const Search: React.FC = () => {
   }
 
   const showSectionDivider = (itemList: Item[]) => {
-    if (searchText === '') 
+    if (searchText === '') // if search text is empty, hide all sections
       return false
-    else if (handleSearch(itemList).length === 0)
+    else if (handleSearch(itemList).length === 0) // if search text is not empty, but no item matches, hide section
       return false
-    else 
+    else // if search text is not empty, and item matches, show section
       return true
   }
 
   return (
     <>
+      {/* Toolbar */}
       <IonToolbar className='search-toolbar'>
         {/* Search bar */}
         <IonSearchbar
@@ -217,72 +219,33 @@ const Search: React.FC = () => {
         <div className='section-divider'>
           <p>Visual Doneness Guides</p>
         </div>}
+
         {/* Search Result for Visual Doneness Guides */}
-        {searchText && handleSearch(guideList).map(item => {
-          return (
-            <div key={item.title}>
-              <IonCard className='search-card'>
-                <img
-                  className={item.category !== 'Visual Doneness Guides' ? 'rounded-image' : ''} 
-                  src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" alt={item.title} 
-                />
-                <div className='search-item'>
-                  <span className='search-title'>{item.title}</span>
-                  <br />
-                  <span className='search-category'>{item.time ? item.time : item.category}</span>
-                </div>
-              </IonCard>
-            </div>
-          )
-        })}
+        {searchText && handleSearch(guideList).map(item => (
+          <SearchCard key={item.title} item={item} />
+        ))}
 
         {/* Just Time & Temp Section */}
         {showSectionDivider(justList) && 
         <div className='section-divider'>
           <p>Just Time & Temp</p>
         </div>}
+
         {/* Search Result for Visual Doneness Guides */}
-        {searchText && handleSearch(justList).map(item => {
-          return (
-            <div key={item.title}>
-              <IonCard className='search-card'>
-                <img
-                  className={item.category !== 'Visual Doneness Guides' ? 'rounded-image' : ''} 
-                  src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" alt={item.title} 
-                />
-                <div className='search-item'>
-                  <span className='search-title'>{item.title}</span>
-                  <br />
-                  <span className='search-category'>{item.time ? item.time : item.category}</span>
-                </div>
-              </IonCard>
-            </div>
-          )
-        })}
+        {searchText && handleSearch(justList).map(item => (
+          <SearchCard key={item.title} item={item} />
+        ))}
 
         {/* ChefStep.com Section */}
         {showSectionDivider(chefStepList) && 
         <div className='section-divider'>
           <p>ChefStep.com</p>
         </div>}
+
         {/* Search Result for ChefStep.com */}
-        {searchText && handleSearch(chefStepList).map(item => {
-          return (
-            <div key={item.title}>
-              <IonCard className='search-card'>
-                <img
-                  className={item.category !== 'Visual Doneness Guides' ? 'rounded-image' : ''} 
-                  src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" alt={item.title} 
-                />
-                <div className='search-item'>
-                  <span className='search-title'>{item.title}</span>
-                  <br />
-                  <span className='search-category'>{item.time ? item.time : item.category}</span>
-                </div>
-              </IonCard>
-            </div>
-          )
-        })}
+        {searchText && handleSearch(chefStepList).map(item => (
+          <SearchCard key={item.title} item={item} />
+        ))}
       </IonContent>
     </>
   )

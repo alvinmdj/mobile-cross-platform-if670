@@ -7,13 +7,13 @@ import {
   IonImg,
   IonLabel
 } from '@ionic/react'
-import { useEffect } from 'react'
 import { qrCodeOutline } from 'ionicons/icons'
+import { useEffect } from 'react'
 
 import { useSplashScreen } from '../../contexts/SplashScreenContext'
 import SplashScreen from '../SplashScreen'
-import CookingGuides from './CookingGuides'
 import SearchByTypes from './SearchByType'
+import CookingGuides from './CookingGuides'
 import './Home.css'
 
 const Home: React.FC = () => {
@@ -22,7 +22,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     setTimeout(() => {
       setShowSplashScreen(false);
-    }, 300);
+    }, 3000);
   }, [setShowSplashScreen])
 
   if (showSplashScreen) {

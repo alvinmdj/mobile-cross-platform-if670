@@ -5,8 +5,13 @@
   padding: 0;
 }
 
+.guide-card-item {
+  --background: none;
+}
+
 .guide-img {
   border-radius: 0 10px 10px 0;
+  height: 120px;
 }
 
 .guide-title {

@@ -1,6 +1,5 @@
 import { 
-  IonCard, 
-  IonCardContent,
+  IonCard,
   IonCol, 
   IonGrid,
   IonRow, 
@@ -67,7 +66,7 @@ const SearchByTypes: React.FC = () => {
         <IonRow>
           {types.map(t => (
             <IonCol sizeXs='4' key={t.name}>
-              <IonCard className='type-card'>
+              <IonCard className='type-card' button>
                 <IonThumbnail className='type-thumbnail'>
                   <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" alt={t.name} />
                 </IonThumbnail>
