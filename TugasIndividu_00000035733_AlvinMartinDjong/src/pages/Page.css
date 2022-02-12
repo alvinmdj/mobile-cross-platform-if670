@@ -11,3 +11,9 @@ ion-fab-button {
   --background: #fff;
   --color: rgb(54, 54, 54);
 }
+
+@media (prefers-color-scheme: dark) {
+  ion-content {
+    --background: var(--ion-color-step-100);
+  }
+}

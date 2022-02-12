@@ -40,3 +40,14 @@
   box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
   border-radius: 50px;
 }
+
+@media (prefers-color-scheme: dark) {
+  .search-fab-btn {
+    --background: var(--ion-color-step-50);
+  }
+
+  .qr-fab-btn {
+    --background: var(--ion-color-step-50);
+    --color: var(--ion-color-step-850);
+  }
+}

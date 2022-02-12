@@ -35,3 +35,13 @@
   flex-grow: 1;
   margin: 0 10px;
 }
+
+@media (prefers-color-scheme: dark) {
+  .type-content {
+    color: var(--ion-color-step-750);
+  }
+
+  .type-divider {
+    color: var(--ion-color-step-700);
+  }
+}

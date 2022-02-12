@@ -54,7 +54,7 @@ const Home: React.FC = () => {
 
       {/* bottom-end FAB */}
       <IonFab vertical="bottom" horizontal="end" slot="fixed">
-        <IonFabButton size='small'>
+        <IonFabButton className='qr-fab-btn' size='small'>
           <IonIcon icon={qrCodeOutline}></IonIcon>
         </IonFabButton>
       </IonFab>

@@ -44,3 +44,13 @@
   flex-grow: 1;
   margin: 0 10px;
 }
+
+@media (prefers-color-scheme: dark) {
+  .guide-title {
+    color: var(--ion-color-step-750);
+  }
+
+  .guide-divider {
+    color: var(--ion-color-step-700);
+  }
+}

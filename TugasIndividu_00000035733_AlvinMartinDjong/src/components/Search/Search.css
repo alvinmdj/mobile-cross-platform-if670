@@ -20,7 +20,7 @@ ion-segment-button {
 }
 
 .search-segment {
-  --background: #fff;
+  --background: var(--ion-color-secondary-contrast);
 }
 
 .search-card {
@@ -62,4 +62,22 @@ ion-segment-button {
   height: 60px;
   margin-top: 10px;
   margin-left: 17px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .search-segment {
+    --background: var(--ion-color-step-50);
+  }
+
+  .search-category {
+    color: var(--ion-color-step-750);
+  }
+
+  .section-divider {
+    color: var(--ion-color-step-850);
+  }
+
+  .search-title {
+    color: var(--ion-color-step-900);
+  }
 }
