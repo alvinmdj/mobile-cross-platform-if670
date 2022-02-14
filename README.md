@@ -83,3 +83,8 @@ ionic capacitor add android
 ```sh
 ionic capacitor copy android
 ```
+
+- Open the created Android project in Android Studio:
+```sh
+ionic capacitor open android
+```
