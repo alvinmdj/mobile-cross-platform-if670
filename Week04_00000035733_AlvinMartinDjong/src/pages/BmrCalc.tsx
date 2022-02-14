@@ -133,7 +133,14 @@ const BmrCalc: React.FC = () => {
               </IonCol>
             </IonRow>
             <IonRow>
-              <IonRadioGroup>
+              <IonCol>
+                <IonItem lines='none'>
+                  <IonLabel>Gender</IonLabel>
+                </IonItem>
+              </IonCol>
+            </IonRow>
+            <IonRadioGroup>
+              <IonRow>
                 <IonCol size='6'>
                   <IonItem>
                     <IonLabel>Male</IonLabel>
@@ -146,8 +153,8 @@ const BmrCalc: React.FC = () => {
                     <IonRadio slot='start' value='female' />
                   </IonItem>
                 </IonCol>
-              </IonRadioGroup>
-            </IonRow>
+              </IonRow>
+            </IonRadioGroup>
             <IonRow>
               <IonCol>
                 <IonItem>
