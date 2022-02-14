@@ -3,6 +3,7 @@ Repository for Mobile Cross Platform Programming assignments (IF670-A)
 
 ## Links
 [Official Ionic Docs](https://ionicframework.com/docs/intro/cli)
+[Capacitor with Ionic](https://capacitorjs.com/docs/getting-started/with-ionic)
 
 ## What's inside this repo
 
@@ -53,6 +54,9 @@ ionic serve
 ```
 
 ## Useful Commands
+
+### General
+
 - Install Ionic CLI (First Time Only):
 ```sh
 npm i -g @ionic/cli
@@ -66,4 +70,16 @@ ionic start
 - Run Development Server:
 ```sh
 ionic serve
+```
+
+### For Android Development
+
+- Create required file and folder for Android project:
+```sh
+ionic capacitor add android
+```
+
+- This command will run react-build script and copy the build result from Ionic-React into assets folder in the Android project:
+```sh
+ionic capacitor copy android
 ```
