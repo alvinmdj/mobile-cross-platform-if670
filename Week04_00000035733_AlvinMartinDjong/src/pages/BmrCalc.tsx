@@ -19,50 +19,55 @@ import {
 } from '@ionic/react';
 
 /* Import components */
-import BmiControls from '../components/BmiControls';
-import BmiResult from '../components/BmiResult';
 import InputControl from '../components/InputControl';
+import BmrResult from '../components/BmrResult';
+import BmrControls from '../components/BmrControls';
 
 const BmrCalc: React.FC = () => {
-  const [calculatedBMI, setCalculatedBMI] = useState<number>();
-  const [category, setCategory] = useState<string>();
+  const [calculatedBMR, setCalculatedBMR] = useState<number>();
   const [error, setError] = useState<string>();
   const [calcUnits, setCalcUnits] = useState<'cmkg' | 'ftlbs'>('cmkg');
+  const [gender, setGender] = useState<string>();
 
   const ageInputRef = useRef<HTMLIonInputElement>(null);
   const heightInputRef = useRef<HTMLIonInputElement>(null);
   const weightInputRef = useRef<HTMLIonInputElement>(null);
 
-  // set BMI category
-  const bmiCategory = (bmi: number): string => {
-    if (bmi < 18.5) return "Kurus";
-    else if (bmi <= 24.9) return "Normal";
-    else if (bmi <= 29.9) return "Gemuk";
-    else return "Obesitas";
-  }
-
   // calculate BMI
-  const calculateBMI = () => {
+  const calculateBMR = () => {
+    const enteredAge = ageInputRef.current!.value;
     const enteredHeight = heightInputRef.current!.value;
     const enteredWeight = weightInputRef.current!.value;
-    let bmi: number;
+    let bmr: number;
 
-    if (!enteredHeight || !enteredWeight || +enteredHeight <= 0 || +enteredWeight <= 0) {
-      setError('Please enter a valid (non-negative) height and weight!');
+    if (
+      !enteredAge || !enteredHeight || !enteredWeight ||
+      +enteredHeight <= 0 || +enteredWeight <= 0 || +enteredAge <= 0
+    ) {
+      setError('Please enter a valid (non-negative) input!');
+      return;
+    } else if (!gender) {
+      setError('Please choose a gender!');
       return;
     }
 
-    if (calcUnits === 'cmkg') {
-      // bmi formula for cm/kg
-      bmi = +enteredWeight / (+enteredHeight / 100) ** 2;
-    } else {
-      // bmi formula for ft/lbs
-      bmi = +enteredWeight / (+enteredHeight * 12) ** 2 * 703;
-    }
+    // if (calcUnits === 'cmkg') {
+      if (gender === 'male') {
+        bmr = 66 + (13.7 * +enteredWeight) + (5 * +enteredHeight) - (6.8 * +enteredAge);
+      } else {
+        bmr = 665 + (9.6 * +enteredWeight) + (1.8 * +enteredHeight) - (4.7 * +enteredAge);
+      }
+    // } else {
+    //   // TODO: calculation with ft/lbs
+    //   if (gender === 'male') {
+    //     bmr = 0
+    //   } else {
+    //     bmr = 1
+    //   }
+    //   // ! bmr = +enteredWeight / (+enteredHeight * 12) ** 2 * 703;
+    // }
 
-    // console.log(bmi);
-    setCategory(bmiCategory(bmi));
-    setCalculatedBMI(bmi);
+    setCalculatedBMR(bmr);
   }
 
   // reset inputs
@@ -70,8 +75,8 @@ const BmrCalc: React.FC = () => {
     ageInputRef.current!.value = '';
     weightInputRef.current!.value = '';
     heightInputRef.current!.value = '';
-    setCalculatedBMI(undefined);
-    setCategory(undefined);
+    setGender(undefined);
+    setCalculatedBMR(undefined);
   }
 
   // clear error
@@ -139,7 +144,7 @@ const BmrCalc: React.FC = () => {
                 </IonItem>
               </IonCol>
             </IonRow>
-            <IonRadioGroup>
+            <IonRadioGroup value={gender} onIonChange={e => setGender(e.detail.value)}>
               <IonRow>
                 <IonCol size='6'>
                   <IonItem>
@@ -171,8 +176,8 @@ const BmrCalc: React.FC = () => {
                 </IonItem>
               </IonCol>
             </IonRow>
-            <BmiControls onCalculate={calculateBMI} onReset={resetInputs} />
-            {calculatedBMI && <BmiResult calculatedBMI={calculatedBMI} category={category} />}
+            <BmrControls onCalculate={calculateBMR} onReset={resetInputs} />
+            {calculatedBMR && <BmrResult calculatedBMR={calculatedBMR} />}
           </IonGrid>
         </IonContent>
       </IonApp>
