@@ -83,3 +83,13 @@ ionic capacitor add android
 ```sh
 ionic capacitor copy android
 ```
+
+- Open the created Android project in Android Studio:
+```sh
+ionic capacitor open android
+```
+
+- Sync Android (use this command if you encounter error like 'could not read script capacitor.settings.gradle' when trying to open the Android project with Android Studio):
+```
+ionic capacitor sync android
+```
