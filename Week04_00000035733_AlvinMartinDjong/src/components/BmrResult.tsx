@@ -23,40 +23,40 @@ const BmrResult: React.FC<{ calculatedBMR: number }> = ({ calculatedBMR }) => {
               <p>Daily calorie needs based on activity level</p>
             </div>
             <IonRow>
-              <IonCol size='9'>
+              <IonCol size='8'>
                 <strong>Activity Level</strong>
               </IonCol>
-              <IonCol size='3' className='ion-text-end'>
+              <IonCol size='4' className='ion-text-end'>
                 <strong>Calorie</strong>
               </IonCol>
-              <IonCol size='9'>
+              <IonCol size='8'>
                 <span>Sedentary: little or no exercise</span>
               </IonCol>
-              <IonCol size='3' className='ion-text-end'>
+              <IonCol size='4' className='ion-text-end'>
                 <span>{sedentary.toFixed(2)}</span>
               </IonCol>
-              <IonCol size='9'>
+              <IonCol size='8'>
                 <span>Exercise 1-3 times/week</span>
               </IonCol>
-              <IonCol size='3' className='ion-text-end'>
+              <IonCol size='4' className='ion-text-end'>
                 <span>{light.toFixed(2)}</span>
               </IonCol>
-              <IonCol size='9'>
+              <IonCol size='8'>
                 <span>Exercise 4-5 times/week</span>
               </IonCol>
-              <IonCol size='3' className='ion-text-end'>
+              <IonCol size='4' className='ion-text-end'>
                 <span>{moderate.toFixed(2)}</span>
               </IonCol>
-              <IonCol size='9'>
+              <IonCol size='8'>
                 <span>Daily exercise or intense exercise 3-4 times/week</span>
               </IonCol>
-              <IonCol size='3' className='ion-text-end'>
+              <IonCol size='4' className='ion-text-end'>
                 <span>{veryActive.toFixed(2)}</span>
               </IonCol>
-              <IonCol size='9'>
+              <IonCol size='8'>
                 <span>Intense exercise 6-7 times/week</span>
               </IonCol>
-              <IonCol size='3' className='ion-text-end'>
+              <IonCol size='4' className='ion-text-end'>
                 <span>{extraActive.toFixed(2)}</span>
               </IonCol>
             </IonRow>
