@@ -103,6 +103,7 @@ const BmiCalc: React.FC = () => {
         isOpen={!!error}  // '!!' ensures that the value is a boolean
         message={error}
         buttons={ [ { text: 'Okay', handler: clearError } ] }
+        onWillDismiss={clearError}
       />
       <IonApp>
         <IonHeader>
