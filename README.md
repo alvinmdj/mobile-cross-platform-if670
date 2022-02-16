@@ -72,6 +72,12 @@ ionic start
 ionic serve
 ```
 
+- Create a build folder for the project, run 'react-scripts build':
+```sh
+// same as 'npm run build'
+ionic build
+```
+
 ### For Android Development
 
 - Create required file and folder for Android project:
