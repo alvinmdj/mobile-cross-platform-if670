@@ -72,7 +72,7 @@ ionic start
 ionic serve
 ```
 
-- Create a build folder for the project, run 'react-scripts build':
+- Create a build folder for the project, this command will run 'react-scripts build':
 ```sh
 // same as 'npm run build'
 ionic build
