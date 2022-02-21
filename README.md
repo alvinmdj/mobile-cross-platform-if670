@@ -1,7 +1,9 @@
 # Mobile Cross Platform Programming (IF670)
+
 Repository for Mobile Cross Platform Programming assignments (IF670-A)
 
 ## Links
+
 [Official Ionic Docs](https://ionicframework.com/docs/intro/cli)
 [Capacitor with Ionic](https://capacitorjs.com/docs/getting-started/with-ionic)
 
@@ -26,19 +28,25 @@ Repository for Mobile Cross Platform Programming assignments (IF670-A)
 - **Week 03 - Ionic & React.js & TypeScript (Part 2)**
   
   Re-create a better project structure with components and add feature to change between cm/kg and ft/lbs to calculate the BMI.
+  
+- **Week 04 - Add BMR Calculator to the previous project**
+
+  Upgrade the previous week project with a routing to move between pages (Home, BMI Calculator, BMR Calculator) and create a feature to calculate BMR.
 
 ## Requirements
+
 - [Node.js](https://nodejs.org/)
 - [NPM](https://www.npmjs.com/)
 - [Ionic CLI](https://ionicframework.com/docs/)
 
-## Get Started
+## Installation
+
 - Clone this repo:
 ```sh
 git clone https://github.com/alvinmdj/mobile-cross-platform-if670.git
 ```
 
-- cd to folder for specified week:
+- cd to root folder for specified week:
 ```sh
 cd mobile-cross-platform-if670/Week<xx>_000000035733_AlvinMartinDjong
 ```
@@ -74,7 +82,7 @@ ionic serve
 
 - Create a build for web app, this command will run 'react-scripts build':
 ```node
-// same as 'npm run build'
+# same as 'npm run build'
 ionic build
 ```
 
@@ -90,12 +98,12 @@ ionic capacitor add android
 ionic capacitor copy android
 ```
 
-- Open the created Android project in Android Studio:
-```sh
-ionic capacitor open android
-```
-
 - Sync Android (use this command if you encounter error like 'could not read script capacitor.settings.gradle' when trying to open the Android project with Android Studio):
 ```
 ionic capacitor sync android
+```
+
+- Open the created Android project in Android Studio:
+```sh
+ionic capacitor open android
 ```
