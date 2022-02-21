@@ -9,7 +9,7 @@ Repository for Mobile Cross Platform Programming assignments (IF670-A)
 
 ## What's inside this repo
 
-- **Tugas Individu**
+- **Tugas Individu (Individual Project) - Joule Clone**
   
   First assignment for theory class, create a Joule (mobile application) clone, including the splash screen, sidebar, home page, and search page. The search page is functioning with dummy data (hint: type 'chicken').
   
