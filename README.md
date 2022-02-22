@@ -4,8 +4,9 @@ Repository for Mobile Cross Platform Programming assignments (IF670-A)
 
 ## Links
 
-[Official Ionic Docs](https://ionicframework.com/docs/intro/cli)
-[Capacitor with Ionic](https://capacitorjs.com/docs/getting-started/with-ionic)
+- [Ionic](https://ionicframework.com/)
+- [Capacitor with Ionic](https://capacitorjs.com/docs/getting-started/with-ionic)
+- [React](https://reactjs.org/)
 
 ## What's inside this repo
 
