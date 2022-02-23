@@ -30,9 +30,13 @@ Repository for Mobile Cross Platform Programming assignments (IF670-A)
   
   Re-create a better project structure with components and add feature to change between cm/kg and ft/lbs to calculate the BMI.
   
-- **Week 04 - Add BMR Calculator to the previous project**
+- **Week 04 - Ionic Routing & Add BMR Calculator to the previous project**
 
   Upgrade the previous week project with a routing to move between pages (Home, BMI Calculator, BMR Calculator) and create a feature to calculate BMR.
+  
+- **Week 05 - Ionic Style & Theme & Grid Systems**
+
+  Apply custom colors (primary, secondary, tertiary) created with Ionic color generator and utilize Ionic responsive grid systems.
 
 ## Requirements
 
