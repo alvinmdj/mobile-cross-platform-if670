@@ -37,6 +37,10 @@ Repository for Mobile Cross Platform Programming assignments (IF670-A)
 - **Week 05 - Ionic Style & Theme & Grid Systems**
 
   Apply custom colors (primary, secondary, tertiary) created with Ionic color generator and utilize Ionic responsive grid systems.
+  
+- **Week 06 - Navigation**
+
+  Working with React Router (dynamic routes), Ionic Tabs, Side Menu, and Swipeable Item.
 
 ## Requirements
 
