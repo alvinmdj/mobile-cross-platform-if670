@@ -1,5 +1,5 @@
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonMenu, IonMenuToggle, IonRouterOutlet, setupIonicReact } from '@ionic/react';
+import { IonApp, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonMenu, IonMenuToggle, IonRouterOutlet, IonTitle, IonToolbar, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { list, settings, warning } from 'ionicons/icons';
 import MailDetail from './pages/MailDetail';
@@ -31,7 +31,11 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonMenu contentId='main'>
-        <IonHeader></IonHeader>
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>Ionic Mail</IonTitle>
+          </IonToolbar>
+        </IonHeader>
         <IonContent>
           <IonList>
             <IonMenuToggle>
