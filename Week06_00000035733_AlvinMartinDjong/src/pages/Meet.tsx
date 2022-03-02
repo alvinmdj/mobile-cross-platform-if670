@@ -3,9 +3,9 @@ import { ban, create, trash } from 'ionicons/icons';
 import React, { useRef } from 'react';
 
 export const FRIENDS_DATA = [
-  {id: 'f1', name: 'John Thor'},
-  {id: 'f2', name: 'John Ness'},
-  {id: 'f3', name: 'John Doe'}
+  {id: 'f1', name: 'John Thor', thumbnail: 'f1.webp'},
+  {id: 'f2', name: 'John Ness', thumbnail: 'f2.webp'},
+  {id: 'f3', name: 'John Doe', thumbnail: 'f3.webp'}
 ];
 
 const Meet: React.FC = () => {
@@ -63,7 +63,7 @@ const Meet: React.FC = () => {
               onClick={callFriendHandler}
             >
               <IonAvatar slot='start'>
-                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
+                <img src={`assets/thumbnails/${friend.thumbnail}`} />
               </IonAvatar>
               <IonLabel>{friend.name}</IonLabel>
             </IonItem>
