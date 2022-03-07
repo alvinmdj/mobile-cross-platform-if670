@@ -4,19 +4,14 @@ import React, { useEffect, useRef } from 'react'
 import { CandidateInfo, useCandidate } from '../contexts/CandidateContext'
 
 const CandidateList: React.FC = () => {
-  const { candidate, addTarget, target } = useCandidate()
+  const { candidate, addTarget } = useCandidate()
 
   const slidingOptionsRef = useRef<HTMLIonItemSlidingElement>(null);
 
   const addToTargetHandler = (c: CandidateInfo) => {
     slidingOptionsRef.current?.closeOpened();
-    console.log(c)
     addTarget(c)
   }
-
-  useEffect(() => {
-    console.log(candidate)
-  }, [candidate])
 
   return (
     <>
