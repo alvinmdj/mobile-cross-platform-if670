@@ -16,7 +16,7 @@ import React from 'react'
 const ProfileCard: React.FC = () => {
   return (
     <IonCard>
-      <img src="/assets/profile/profile-picture.jpg" alt="Profile Picture" />
+      <img src="/assets/profile/picture.webp" alt="Developer" />
       <IonCardHeader class='ion-text-center'>
         <IonCardTitle>Alvin Martin Djong</IonCardTitle>
         <IonCardSubtitle>00000035733</IonCardSubtitle>

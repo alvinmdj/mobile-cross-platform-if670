@@ -13,6 +13,10 @@ import {
 import React from 'react'
 
 const Sidemenu: React.FC = () => {
+  const toggleDarkMode = () => {
+    document.body.classList.toggle('dark')
+  }
+  
   return (
     <IonMenu side="start" contentId='main' menuId="sidemenu">
       <IonHeader>
@@ -35,7 +39,7 @@ const Sidemenu: React.FC = () => {
           </IonMenuToggle>
           <IonItem>
             <IonLabel>Welcome to Dark Theme</IonLabel>
-            <IonToggle />
+            <IonToggle onIonChange={toggleDarkMode} />
           </IonItem>
         </IonList>
       </IonContent>
