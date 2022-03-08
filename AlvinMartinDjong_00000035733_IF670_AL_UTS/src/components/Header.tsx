@@ -22,8 +22,8 @@ const Header: React.FC<Props> = ({ title }) => {
           <IonMenuButton menu='sidemenu' />
         </IonButtons>
         <IonButtons slot='end'>
-          <IonButton shape='round' routerLink='/profile'>
-            <IonIcon icon={personCircleOutline} />
+          <IonButton class='btn-profile' shape='round' routerLink='/profile'>
+            <IonIcon size='large' icon={personCircleOutline} />
           </IonButton>
         </IonButtons>
         <IonTitle>{ title }</IonTitle>

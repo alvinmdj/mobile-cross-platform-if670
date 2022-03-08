@@ -1,23 +1,34 @@
 import {
   IonCard,
-  IonCardContent,
+  IonCol,
   IonContent,
   IonPage,
-  IonThumbnail
+  IonRow
 } from '@ionic/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import './Home.css';
+import { Pagination } from 'swiper';
+
 import CandidateList from '../components/CandidateList';
 import Header from '../components/Header';
 import { useCandidate } from '../contexts/CandidateContext';
 
-// https://swiperjs.com/react/
-import '../../node_modules/swiper/swiper.min.css';
-import '@ionic/react/css/ionic-swiper.css';
-
+import './Home.css';
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 const Home: React.FC = () => {
-  const { candidate } = useCandidate()
+  const { candidate, target } = useCandidate()
+
+  // Shuffle all candidates (from both candidate & target array)
+  const shuffleArray = () => {
+    let allCandidates = candidate.concat(target)
+    for (let i = allCandidates.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [allCandidates[i], allCandidates[j]] = [allCandidates[j], allCandidates[i]];
+    }
+    return allCandidates
+  }
+  const randomCandidates = shuffleArray()
 
   return (
     <IonPage>
@@ -25,17 +36,25 @@ const Home: React.FC = () => {
       <IonContent fullscreen>
         <Swiper
           slidesPerView={3}
-          navigation
+          slidesPerGroup={3}
           pagination={{ clickable: true }}
+          loop={true}
+          modules={[Pagination]}
         >
-          <SwiperSlide>
-            <IonCard>
-              <IonThumbnail><img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" /></IonThumbnail>
-              <IonCardContent>
-                Alvin Martin Djong
-              </IonCardContent>
-            </IonCard>
-          </SwiperSlide>
+          {randomCandidates.map((c, index) => (
+            <SwiperSlide key={index}>
+              <IonCard button>
+                <IonRow>
+                  <IonCol size='12' class='ion-text-center' style={{ marginTop: '10px' }}>
+                    <img src={c.photo} width={60} height={60} alt={c.name} />
+                  </IonCol>
+                  <IonCol class='ion-text-center' style={{ minHeight:'50px' }}>
+                    <p style={{ margin: 0, padding: '0 5px' }}>{c.name}</p>
+                  </IonCol>
+                </IonRow>
+              </IonCard>
+            </SwiperSlide>
+          ))}
         </Swiper>
         <CandidateList />
       </IonContent>

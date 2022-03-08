@@ -6,13 +6,14 @@ import {
   IonItemOption, 
   IonItemOptions, 
   IonItemSliding, 
-  IonLabel 
+  IonLabel,
 } from '@ionic/react'
 import { close, trash } from 'ionicons/icons'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { CandidateInfo, useCandidate } from '../contexts/CandidateContext'
 
 const TargetList: React.FC = () => {
+
   const [showActionSheet, setShowActionSheet] = useState(false)
   const [selectedTarget, setSelectedTarget] = useState<CandidateInfo | undefined>(undefined)
 
@@ -34,9 +35,6 @@ const TargetList: React.FC = () => {
   // clean up
   // useEffect(() => {
   //   let isMounted = true
-  //   setTimeout(() => {
-  //     setSelectedTarget(undefined)
-  //   }, 1000)
   //   return () => { isMounted = false }
   // }, [target])
 
@@ -46,7 +44,6 @@ const TargetList: React.FC = () => {
         return (
           <IonItemSliding key={index} ref={slidingOptionsRef}>
             <IonItemOptions side='end'>
-              {/* <IonItemOption color='danger' onClick={() => removeFromTargetHandler(c)}> */}
               <IonItemOption color='danger' onClick={() => handleClick(c)}>
                 <IonIcon slot='icon-only' icon={close} />
               </IonItemOption>
