@@ -5,16 +5,20 @@ import {
   IonPage,
   IonThumbnail
 } from '@ionic/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import './Home.css';
 import CandidateList from '../components/CandidateList';
 import Header from '../components/Header';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { useCandidate } from '../contexts/CandidateContext';
 
 // https://swiperjs.com/react/
 import '../../node_modules/swiper/swiper.min.css';
 import '@ionic/react/css/ionic-swiper.css';
 
+
 const Home: React.FC = () => {
+  const { candidate } = useCandidate()
+
   return (
     <IonPage>
       <Header title='Bosen Jomblo' />
@@ -24,70 +28,6 @@ const Home: React.FC = () => {
           navigation
           pagination={{ clickable: true }}
         >
-          <SwiperSlide>
-            <IonCard>
-              <IonThumbnail><img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" /></IonThumbnail>
-              <IonCardContent>
-                Alvin Martin Djong
-              </IonCardContent>
-            </IonCard>
-          </SwiperSlide>
-          <SwiperSlide>
-            <IonCard>
-              <IonThumbnail><img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" /></IonThumbnail>
-              <IonCardContent>
-                Alvin Martin Djong
-              </IonCardContent>
-            </IonCard>
-          </SwiperSlide>
-          <SwiperSlide>
-            <IonCard>
-              <IonThumbnail><img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" /></IonThumbnail>
-              <IonCardContent>
-                Alvin Martin Djong
-              </IonCardContent>
-            </IonCard>
-          </SwiperSlide>
-          <SwiperSlide>
-            <IonCard>
-              <IonThumbnail><img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" /></IonThumbnail>
-              <IonCardContent>
-                Alvin Martin Djong
-              </IonCardContent>
-            </IonCard>
-          </SwiperSlide>
-          <SwiperSlide>
-            <IonCard>
-              <IonThumbnail><img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" /></IonThumbnail>
-              <IonCardContent>
-                Alvin Martin Djong
-              </IonCardContent>
-            </IonCard>
-          </SwiperSlide>
-          <SwiperSlide>
-            <IonCard>
-              <IonThumbnail><img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" /></IonThumbnail>
-              <IonCardContent>
-                Alvin Martin Djong
-              </IonCardContent>
-            </IonCard>
-          </SwiperSlide>
-          <SwiperSlide>
-            <IonCard>
-              <IonThumbnail><img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" /></IonThumbnail>
-              <IonCardContent>
-                Alvin Martin Djong
-              </IonCardContent>
-            </IonCard>
-          </SwiperSlide>
-          <SwiperSlide>
-            <IonCard>
-              <IonThumbnail><img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" /></IonThumbnail>
-              <IonCardContent>
-                Alvin Martin Djong
-              </IonCardContent>
-            </IonCard>
-          </SwiperSlide>
           <SwiperSlide>
             <IonCard>
               <IonThumbnail><img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" /></IonThumbnail>

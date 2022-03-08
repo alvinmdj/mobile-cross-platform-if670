@@ -1,16 +1,21 @@
-import { IonAvatar, IonIcon, IonItem, IonItemOption, IonItemOptions, IonItemSliding, IonLabel } from '@ionic/react'
+import { IonAvatar, IonIcon, IonItem, IonItemOption, IonItemOptions, IonItemSliding, IonLabel, useIonLoading } from '@ionic/react'
 import { heart } from 'ionicons/icons'
 import React, { useRef } from 'react'
 import { CandidateInfo, useCandidate } from '../contexts/CandidateContext'
 
 const CandidateList: React.FC = () => {
+  const [ present ] = useIonLoading()
+
   const { candidate, addTarget } = useCandidate()
 
   const slidingOptionsRef = useRef<HTMLIonItemSlidingElement>(null)
 
   const addToTargetHandler = (c: CandidateInfo) => {
-    slidingOptionsRef.current?.closeOpened();
-    addTarget(c)
+    present('Loading', 1500, 'bubbles')
+    setTimeout(() => {
+      slidingOptionsRef.current?.closeOpened();
+      addTarget(c)
+    }, 1500)
   }
 
   return (
