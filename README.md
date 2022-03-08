@@ -10,6 +10,10 @@ Repository for Mobile Cross Platform Programming assignments (IF670-A)
 
 ## What's inside this repo
 
+- **UTS (midterm exam) - Bosen Jomblo**
+  
+  Midterm exam application - Bosen Jomblo. Create a list of candidates user can swipe to add to their target list or remove their target. Contains usage of: react contexts, swiper.js, dark theme toggler, ionic list, ionic swiper, ionic loading, ionic action sheets, and other ionic stuffs.
+
 - **Tugas Individu (Individual Project) - Joule Clone**
   
   First assignment for the theory class, create a Joule (mobile application) clone, including the splash screen, sidebar, home page, and search page. The search page is functioning with dummy data (hint: type 'chicken').
