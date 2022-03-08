@@ -1,14 +1,18 @@
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
 
+// candidate interface
 export interface CandidateInfo {
   name: string
+  status: string
   gender: string
   photo: string
 }
 
+// context interface
 interface Context {
   candidate: CandidateInfo[]
   target: CandidateInfo[]
+  isEmptyTarget: boolean
   addTarget: (candidate: CandidateInfo) => void
   removeTarget: (candidate: CandidateInfo) => void
 }
@@ -17,6 +21,7 @@ interface Context {
 const defaultValue = {
   candidate: [],
   target: [],
+  isEmptyTarget: true,
   addTarget: () => {},
   removeTarget: () => {}
 }
@@ -32,64 +37,77 @@ export const useCandidate = () => {
 // Context provider
 export const CandidateProvider: React.FC = ({ children }) => {
 
+  // dummy candidates
   const defaultCandidates = [
     {
       name: 'Taiga Aisaka',
+      status: 'Hello',
       gender: 'Female',
       photo: '/assets/candidates/1.png'
     },
     {
       name: 'Ritsuko Akagi',
+      status: 'Mantap',
       gender: 'Female',
       photo: '/assets/candidates/2.png'
     },
     {
       name: 'Mikasa Ackermann',
+      status: 'Sasageyo',
       gender: 'Female',
       photo: '/assets/candidates/3.png'
     },
     {
       name: 'Annie Leonhart',
+      status: 'World',
       gender: 'Female',
       photo: '/assets/candidates/4.png'
     },
     {
       name: 'Nezuko Kamado',
+      status: 'Single',
       gender: 'Female',
       photo: '/assets/candidates/5.png'
     },
     {
       name: 'Sakura Haruno',
+      status: 'Okay',
       gender: 'Female',
       photo: '/assets/candidates/6.png'
     },
     {
       name: 'Yuno Gasai',
+      status: 'Busy!',
       gender: 'Female',
       photo: '/assets/candidates/7.png'
     },
     {
       name: 'Hange Zoe',
+      status: 'Noice',
       gender: 'Female',
       photo: '/assets/candidates/8.png'
     },
     {
       name: 'Erza Scarlet',
+      status: 'Nice',
       gender: 'Female',
       photo: '/assets/candidates/9.png'
     },
     {
       name: 'Nico Robin',
+      status: 'Great',
       gender: 'Female',
       photo: '/assets/candidates/10.png'
     },
     {
       name: 'Emilia Tan',
+      status: 'Perfect',
       gender: 'Female',
       photo: '/assets/candidates/11.png'
     },
     {
       name: 'Marin Kitagawa',
+      status: 'Good bye',
       gender: 'Female',
       photo: '/assets/candidates/12.png'
     },
@@ -97,6 +115,7 @@ export const CandidateProvider: React.FC = ({ children }) => {
 
   const [candidate, setCandidate] = useState<CandidateInfo[]>(defaultCandidates)
   const [target, setTarget] = useState<CandidateInfo[]>([])
+  const [isEmptyTarget, setIsEmptyTarget] = useState(true)
 
   // add to target, remove from candidate
   const addTarget = (newTarget: CandidateInfo) => {
@@ -110,11 +129,24 @@ export const CandidateProvider: React.FC = ({ children }) => {
     setCandidate((currCandidate) => currCandidate.concat(selectedTarget))
   }
 
+  // clean up
+  useEffect(() => {
+    let isMounted = true
+    setTimeout(() => {
+      if (isMounted) {
+        if (target.length > 0) setIsEmptyTarget(false)
+        else setIsEmptyTarget(true)
+      }
+    }, 500)
+    return () => { isMounted = false }
+  }, [target])
+
   return (
     <CandidateContext.Provider
       value={{
         candidate,
         target,
+        isEmptyTarget,
         addTarget,
         removeTarget
       }}

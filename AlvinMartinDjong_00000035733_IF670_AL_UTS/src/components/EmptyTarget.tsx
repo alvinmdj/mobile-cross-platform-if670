@@ -6,7 +6,7 @@ const EmptyTarget: React.FC = () => {
   return (
     <IonRow class='ion-text-center'>
       <IonCol size='12'>
-        <IonLabel>Anda masih jones ???</IonLabel>
+        <h3>Anda masih jones ???</h3>
       </IonCol>
       <IonCol size='12'>
         <IonButton expand="block" routerLink='/home'>

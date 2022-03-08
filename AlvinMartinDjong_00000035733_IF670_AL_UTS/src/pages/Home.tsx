@@ -28,7 +28,9 @@ const Home: React.FC = () => {
     }
     return allCandidates
   }
-  const randomCandidates = shuffleArray()
+
+  // get 10 items from shuffled array
+  const randomCandidates = shuffleArray().slice(0, 10)
 
   return (
     <IonPage>

@@ -1,5 +1,4 @@
 import { 
-  IonAvatar,
   IonActionSheet,
   IonIcon, 
   IonItem, 
@@ -7,10 +6,14 @@ import {
   IonItemOptions, 
   IonItemSliding, 
   IonLabel,
+  IonCol,
+  IonRow,
 } from '@ionic/react'
-import { close, trash } from 'ionicons/icons'
+import { close, returnDownBack, trash } from 'ionicons/icons'
 import React, { useRef, useState } from 'react'
 import { CandidateInfo, useCandidate } from '../contexts/CandidateContext'
+
+import './TargetList.css'
 
 const TargetList: React.FC = () => {
 
@@ -32,12 +35,6 @@ const TargetList: React.FC = () => {
     setSelectedTarget(undefined)
   }
 
-  // clean up
-  // useEffect(() => {
-  //   let isMounted = true
-  //   return () => { isMounted = false }
-  // }, [target])
-
   return (
     <>
       {target.map((c, index) => {
@@ -48,12 +45,17 @@ const TargetList: React.FC = () => {
                 <IonIcon slot='icon-only' icon={close} />
               </IonItemOption>
             </IonItemOptions>
-            <IonItem lines="full">
-              <IonAvatar slot='start'>
-                <img src={c.photo} alt={c.name} />
-              </IonAvatar>
-              <IonLabel>{c.name}</IonLabel>
-              {c.gender}
+            <IonItem lines="full" className='target-item'>
+              <IonRow>
+                <IonCol>
+                  <img src={c.photo} alt={c.name} width={60} height={60} />
+                </IonCol>
+                <IonCol class='ion-margin-start'>
+                  <IonLabel style={{ fontSize: '20px', marginBottom: '5px' }}>{c.name}</IonLabel>
+                  <IonLabel style={{ fontSize: '14px' }}>{c.status}</IonLabel>
+                  <IonLabel style={{ fontSize: '14px' }}>♀ {c.gender}</IonLabel>
+                </IonCol>
+              </IonRow>
             </IonItem>
           </IonItemSliding>
         )
@@ -75,7 +77,7 @@ const TargetList: React.FC = () => {
           }
         }, {
           text: 'Ga yakin, kembali',
-          icon: close,
+          icon: returnDownBack,
           role: 'cancel',
           handler: () => {
             slidingOptionsRef.current?.closeOpened();
