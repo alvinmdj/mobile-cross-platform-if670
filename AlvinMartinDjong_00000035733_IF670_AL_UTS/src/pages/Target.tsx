@@ -5,6 +5,7 @@ import {
 import React from 'react'
 import EmptyTarget from '../components/EmptyTarget'
 import Header from '../components/Header'
+import TargetList from '../components/TargetList'
 import { useCandidate } from '../contexts/CandidateContext'
 
 const Target: React.FC = () => {
@@ -14,11 +15,7 @@ const Target: React.FC = () => {
     <IonPage>
       <Header title='Target Gebetan' />
       <IonContent fullscreen>
-        {target && (
-          target.map((t, index) => (
-            <div key={index}>{t.name}</div>
-          ))
-        )}
+        {target.length > 0 && <TargetList />}
         {target.length === 0 && <EmptyTarget />}
       </IonContent>
     </IonPage>

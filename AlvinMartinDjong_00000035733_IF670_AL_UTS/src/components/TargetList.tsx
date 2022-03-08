@@ -1,26 +1,27 @@
 import { IonAvatar, IonIcon, IonItem, IonItemOption, IonItemOptions, IonItemSliding, IonLabel } from '@ionic/react'
-import { heart } from 'ionicons/icons'
+import { close } from 'ionicons/icons'
 import React, { useRef } from 'react'
 import { CandidateInfo, useCandidate } from '../contexts/CandidateContext'
 
-const CandidateList: React.FC = () => {
-  const { candidate, addTarget } = useCandidate()
+const TargetList: React.FC = () => {
+  const { target, removeTarget } = useCandidate()
 
   const slidingOptionsRef = useRef<HTMLIonItemSlidingElement>(null)
 
-  const addToTargetHandler = (c: CandidateInfo) => {
+  const removeFromTargetHandler = (c: CandidateInfo) => {
     slidingOptionsRef.current?.closeOpened();
-    addTarget(c)
+    removeTarget(c)
   }
+
 
   return (
     <>
-      {candidate.map((c, index) => {
+      {target.map((c, index) => {
         return (
           <IonItemSliding key={index} ref={slidingOptionsRef}>
             <IonItemOptions side='end'>
-              <IonItemOption color='primary' onClick={() => addToTargetHandler(c)}>
-                <IonIcon slot='icon-only' icon={heart} />
+              <IonItemOption color='danger' onClick={() => removeFromTargetHandler(c)}>
+                <IonIcon slot='icon-only' icon={close} />
               </IonItemOption>
             </IonItemOptions>
             <IonItem lines="full">
@@ -37,4 +38,4 @@ const CandidateList: React.FC = () => {
   )
 }
 
-export default CandidateList
+export default TargetList

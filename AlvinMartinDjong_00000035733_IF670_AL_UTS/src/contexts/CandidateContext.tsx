@@ -98,11 +98,13 @@ export const CandidateProvider: React.FC = ({ children }) => {
   const [candidate, setCandidate] = useState<CandidateInfo[]>(defaultCandidates)
   const [target, setTarget] = useState<CandidateInfo[]>([])
 
+  // add to target, remove from candidate
   const addTarget = (newTarget: CandidateInfo) => {
     setTarget((currTarget) => currTarget.concat(newTarget))
     setCandidate((currCandidate) => currCandidate.filter((c) => c.name !== newTarget.name))
   }
 
+  // remove from target, add back to candidate
   const removeTarget = (selectedTarget: CandidateInfo) => {
     setTarget((currTarget) => currTarget.filter((c) => c.name !== selectedTarget.name))
     setCandidate((currCandidate) => currCandidate.concat(selectedTarget))
