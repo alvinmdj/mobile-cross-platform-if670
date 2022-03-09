@@ -7,14 +7,14 @@ import FriendsContext from '../data/friend-context';
 interface FriendProps {
   id: string
   name: string
-  thumbnail: string
+  photo: string
 }
 
-export const FRIENDS_DATA = [
-  {id: 'f1', name: 'John Thor', thumbnail: 'f1.webp'},
-  {id: 'f2', name: 'John Ness', thumbnail: 'f2.webp'},
-  {id: 'f3', name: 'John Doe', thumbnail: 'f3.webp'}
-];
+// export const FRIENDS_DATA = [
+//   {id: 'f1', name: 'John Thor', photo: 'f1.webp'},
+//   {id: 'f2', name: 'John Ness', photo: 'f2.webp'},
+//   {id: 'f3', name: 'John Doe', photo: 'f3.webp'}
+// ];
 
 const Meet: React.FC = () => {
   const friendsCtx  = useContext(FriendsContext);
@@ -23,35 +23,51 @@ const Meet: React.FC = () => {
 
   const slidingOptionsRef = useRef<HTMLIonItemSlidingElement>(null);
 
+  const [selectedFriend, setSelectedFriend] = useState<FriendProps | null>();
+  const [selectedFriendId, setSelectedFriendId] = useState<string | null>();
+
   const [toastMessage, setToastMessage] = useState('');
 
   const [isEditing, setIsEditing] = useState(false);
-  
-  const saveFriendHandler = () => {
-    const enteredName = nameRef.current!.value;
-    if(!enteredName) return;
-    if(selectedFriend === null) {
-      friendsCtx.addFriend(enteredName.toString(), '');
-    }
-    setIsEditing(false);
-  }
-  
-  const startAddFriendHandler = () => {
-    console.log("Adding friend...");
-    setIsEditing(true)
-    setSelectedFriend(null)
-  }
 
+  // call friend handler 
   const callFriendHandler = () => {
     console.log("Calling...");
   };
   
+  // add/update friend handler
+  const saveFriendHandler = () => {
+    const enteredName = nameRef.current!.value;
+    if(!enteredName) return;
+    if(selectedFriend === null) {
+      friendsCtx.addFriend(enteredName.toString(), 'f1.webp');
+      setToastMessage('New friend has been added!');
+      console.log("Adding friend...");
+    }
+    if(selectedFriend !== null) {
+      friendsCtx.updateFriend(selectedFriendId!, enteredName.toString(), 'f1.webp');
+      setToastMessage(`${selectedFriend?.name} has been updated!`);
+      setSelectedFriend(null);
+      setSelectedFriendId(null);
+      console.log("Updating friend...");
+    }
+    setIsEditing(false);
+  }
+  
+  // open modal to add new friend
+  const startAddFriendHandler = () => {
+    setIsEditing(true)
+    setSelectedFriend(null)
+  }
+  
+  // trigger alert to block friend
   const [startBlocking, setStartBlocking] = useState(false);
   const startBlockFriendHandler = () => {
     setStartBlocking(true);
     slidingOptionsRef.current?.closeOpened();
   }
 
+  // block friend handler
   const blockFriendHandler = (/* event: React.MouseEvent */) => {
     // event.stopPropagation();
     setStartBlocking(false);
@@ -59,27 +75,34 @@ const Meet: React.FC = () => {
     console.log("Blocking...");
   };
 
+  // trigger alert to delete friend
   const [startDeleting, setStartDeleting] = useState(false);
-  const startDeleteFriendHandler = () => {
+  const startDeleteFriendHandler = (id: string) => {
+    setSelectedFriendId(id);
     setStartDeleting(true);
     slidingOptionsRef.current?.closeOpened();
   }
 
+  // delete a friend handler
   const deleteFriendHandler = () => {
+    friendsCtx.deleteFriend(selectedFriendId!);
     setStartDeleting(false);
+    setSelectedFriendId(null);
     setToastMessage('Deleted Friend!');
     console.log("Deleting...");
   }
 
-  const [selectedFriend, setSelectedFriend] = useState<FriendProps | null>();
+  // trigger alert to update friend
   const startEditFriendHandler = (friendId: string) => {
     slidingOptionsRef.current?.closeOpened();
     console.log("Editing...");
-    const friend = FRIENDS_DATA.find(f => f.id === friendId);
+    const friend = friendsCtx.friends.find(f => f.id === friendId);
     setSelectedFriend(friend);
+    setSelectedFriendId(friendId);
     setIsEditing(true);
   }
 
+  // cancel add/edit and close the modal
   const cancelEditFriendHandler = () => {
     setIsEditing(false);
   }
@@ -161,7 +184,7 @@ const Meet: React.FC = () => {
                 <IonItemOption color='danger' onClick={startBlockFriendHandler}>
                   <IonIcon slot='icon-only' icon={ban} />
                 </IonItemOption>
-                <IonItemOption color='warning' onClick={startDeleteFriendHandler}>
+                <IonItemOption color='warning' onClick={() => startDeleteFriendHandler(friend.id)}>
                   <IonIcon slot='icon-only' icon={trash} />
                 </IonItemOption>
               </IonItemOptions>

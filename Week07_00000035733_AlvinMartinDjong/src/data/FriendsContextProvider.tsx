@@ -7,6 +7,16 @@ const FriendsContextProvider: React.FC = props => {
       id: 'f1',
       name: 'John Thor',
       photo: 'f1.webp'
+    },
+    {
+      id: 'f2',
+      name: 'John Ness',
+      photo: 'f1.webp'
+    },
+    {
+      id: 'f3',
+      name: 'John Dhoe',
+      photo: 'f1.webp'
     }
   ])
 
@@ -22,9 +32,20 @@ const FriendsContextProvider: React.FC = props => {
     })
   }
 
-  const updateFriend = () => {}
+  const updateFriend = (id: string, name: string, photo: string) => {
+    const updatedFriend: Friend = { id, name, photo }
+    const updatedFriendIndex = friends.findIndex(friend => friend.id === id)
+    setFriends(currFriends => {
+      currFriends[updatedFriendIndex] = updatedFriend
+      return currFriends
+    })
+  }
 
-  const deleteFriend = () => {}
+  const deleteFriend = (id: string) => {
+    setFriends(currFriends => {
+      return currFriends.filter(curr => curr.id !== id)
+    })
+  }
 
   return (
     <FriendsContext.Provider value={{ 
