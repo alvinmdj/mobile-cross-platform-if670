@@ -111,6 +111,54 @@ export const CandidateProvider: React.FC = ({ children }) => {
       gender: 'Female',
       photo: '/assets/candidates/12.png'
     },
+    {
+      name: 'Naruto Uzumaki',
+      status: 'Konoha',
+      gender: 'Male',
+      photo: '/assets/candidates/13.png'
+    },
+    {
+      name: 'Sasuke Uchiha',
+      status: 'Akatsuki',
+      gender: 'Male',
+      photo: '/assets/candidates/14.png'
+    },
+    {
+      name: 'Eren Yeager',
+      status: 'Good',
+      gender: 'Male',
+      photo: '/assets/candidates/15.png'
+    },
+    {
+      name: 'Armin Arlert',
+      status: 'Cool',
+      gender: 'Male',
+      photo: '/assets/candidates/16.png'
+    },
+    {
+      name: 'Percy Jackson',
+      status: 'Good morning',
+      gender: 'Male',
+      photo: '/assets/candidates/17.png'
+    },
+    {
+      name: 'Kirigaya Kazuto',
+      status: 'Swordman',
+      gender: 'Male',
+      photo: '/assets/candidates/18.png'
+    },
+    {
+      name: 'Noel Noah',
+      status: 'Football is my life',
+      gender: 'Male',
+      photo: '/assets/candidates/19.png'
+    },
+    {
+      name: 'Jean Connie',
+      status: 'Hello, world',
+      gender: 'Male',
+      photo: '/assets/candidates/20.png'
+    },
   ]
 
   const [candidate, setCandidate] = useState<CandidateInfo[]>(defaultCandidates)

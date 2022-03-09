@@ -53,7 +53,7 @@ const TargetList: React.FC = () => {
                 <IonCol class='ion-margin-start'>
                   <IonLabel style={{ fontSize: '20px', marginBottom: '5px' }}>{c.name}</IonLabel>
                   <IonLabel style={{ fontSize: '14px' }}>{c.status}</IonLabel>
-                  <IonLabel style={{ fontSize: '14px' }}>♀ {c.gender}</IonLabel>
+                  <IonLabel style={{ fontSize: '14px' }}>{c.gender === 'Male' ? '♂' : '♀'} {c.gender}</IonLabel>
                 </IonCol>
               </IonRow>
             </IonItem>
