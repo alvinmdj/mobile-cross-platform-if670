@@ -27,6 +27,7 @@ const Sidemenu: React.FC = () => {
       <IonContent>
         <IonList>
           <IonMenuToggle>
+            {/* TODO : HIGHLIGHT SELECTED MENU */}
             <IonItem button routerLink='/home'>
               <IonLabel>Daftar Calon Pasangan</IonLabel>
             </IonItem>

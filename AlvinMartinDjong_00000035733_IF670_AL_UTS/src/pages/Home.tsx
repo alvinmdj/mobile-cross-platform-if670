@@ -35,7 +35,7 @@ const Home: React.FC = () => {
   return (
     <IonPage>
       <Header title='Bosen Jomblo' />
-      <IonContent fullscreen>
+      <IonContent fullscreen color='light'>
         <Swiper
           slidesPerView={3}
           slidesPerGroup={3}
@@ -45,7 +45,7 @@ const Home: React.FC = () => {
         >
           {randomCandidates.map((c, index) => (
             <SwiperSlide key={index}>
-              <IonCard button>
+              <IonCard button color='medium'>
                 <IonRow>
                   <IonCol size='12' class='ion-text-center' style={{ marginTop: '10px' }}>
                     <img src={c.photo} width={60} height={60} alt={c.name} />

@@ -14,7 +14,7 @@ const Target: React.FC = () => {
   return (
     <IonPage>
       <Header title='Target Gebetan' />
-      <IonContent fullscreen>
+      <IonContent fullscreen color='light'>
         {!isEmptyTarget && <TargetList />}
         {isEmptyTarget && <EmptyTarget />}
       </IonContent>

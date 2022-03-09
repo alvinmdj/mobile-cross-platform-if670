@@ -8,6 +8,7 @@ import {
   IonLabel,
   IonCol,
   IonRow,
+  useIonLoading,
 } from '@ionic/react'
 import { close, returnDownBack, trash } from 'ionicons/icons'
 import React, { useRef, useState } from 'react'
@@ -16,6 +17,7 @@ import { CandidateInfo, useCandidate } from '../contexts/CandidateContext'
 import './TargetList.css'
 
 const TargetList: React.FC = () => {
+  const [ present ] = useIonLoading()
 
   const [showActionSheet, setShowActionSheet] = useState(false)
   const [selectedTarget, setSelectedTarget] = useState<CandidateInfo | undefined>(undefined)
@@ -30,6 +32,7 @@ const TargetList: React.FC = () => {
   }
 
   const removeFromTargetHandler = (c: CandidateInfo) => {
+    present('Loading', 1000, 'bubbles')
     slidingOptionsRef.current?.closeOpened();
     removeTarget(c)
     setSelectedTarget(undefined)

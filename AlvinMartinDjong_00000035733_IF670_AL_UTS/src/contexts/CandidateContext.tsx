@@ -185,7 +185,7 @@ export const CandidateProvider: React.FC = ({ children }) => {
         if (target.length > 0) setIsEmptyTarget(false)
         else setIsEmptyTarget(true)
       }
-    }, 500)
+    }, 1000)
     return () => { isMounted = false }
   }, [target])
 

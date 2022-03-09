@@ -40,7 +40,12 @@ const CandidateList: React.FC = () => {
                 <IonIcon slot='icon-only' icon={heart} />
               </IonItemOption>
             </IonItemOptions>
-            <IonItem lines="full" className='candidate-item'>
+            <IonItem 
+              className='candidate-item'
+              lines="full" 
+              shape='round' 
+              color={index % 2 === 0 ? 'medium' : 'light'}
+            >
               <IonRow>
                 <IonCol>
                   <img src={c.photo} alt={c.name} width={60} height={60} />

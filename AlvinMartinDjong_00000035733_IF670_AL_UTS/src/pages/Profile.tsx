@@ -10,7 +10,7 @@ const Profile: React.FC = () => {
   return (
     <IonPage>
       <Header title='Profil' />
-      <IonContent fullscreen>
+      <IonContent fullscreen color='light'>
         <ProfileCard />
       </IonContent>
     </IonPage>
