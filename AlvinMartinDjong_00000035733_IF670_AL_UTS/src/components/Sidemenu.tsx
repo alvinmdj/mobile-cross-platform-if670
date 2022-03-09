@@ -1,6 +1,7 @@
 import { 
   IonContent, 
   IonHeader, 
+  IonIcon, 
   IonItem, 
   IonLabel, 
   IonList, 
@@ -10,9 +11,33 @@ import {
   IonToggle, 
   IonToolbar 
 } from '@ionic/react'
+import { contrastOutline, listOutline, lockClosedOutline, personOutline } from 'ionicons/icons'
 import React from 'react'
+import { useLocation } from 'react-router'
+
+import './Sidemenu.css'
+
+const menuList = [
+  {
+    title: 'Daftar Calon Pasangan',
+    url: '/home',
+    icon: listOutline
+  },
+  {
+    title: 'Target Pasangan',
+    url: '/target',
+    icon: lockClosedOutline
+  },
+  {
+    title: 'Profile',
+    url: '/profile',
+    icon: personOutline
+  },
+]
 
 const Sidemenu: React.FC = () => {
+  const location = useLocation();
+
   const toggleDarkMode = () => {
     document.body.classList.toggle('dark')
   }
@@ -27,19 +52,22 @@ const Sidemenu: React.FC = () => {
       <IonContent>
         <IonList>
           <IonMenuToggle>
-            {/* TODO : HIGHLIGHT SELECTED MENU */}
-            <IonItem button routerLink='/home'>
-              <IonLabel>Daftar Calon Pasangan</IonLabel>
-            </IonItem>
-            <IonItem button routerLink='/target'>
-              <IonLabel>Target Pasangan</IonLabel>
-            </IonItem>
-            <IonItem button routerLink='/profile'>
-              <IonLabel>Profile</IonLabel>
-            </IonItem>
+            {menuList.map((menu, index) => (
+              <IonItem 
+                button
+                lines='none'
+                routerLink={menu.url} 
+                key={index} 
+                className={location.pathname === menu.url ? 'selected' : ''} 
+              >
+                <IonIcon slot='start' icon={menu.icon} />
+                <IonLabel>{menu.title}</IonLabel>
+              </IonItem>
+            ))}
           </IonMenuToggle>
-          <IonItem>
-            <IonLabel>Welcome to Dark Theme</IonLabel>
+          <IonItem lines='none'>
+            <IonIcon slot='start' icon={contrastOutline} />
+            <IonLabel>Toggle Dark Theme</IonLabel>
             <IonToggle onIonChange={toggleDarkMode} />
           </IonItem>
         </IonList>

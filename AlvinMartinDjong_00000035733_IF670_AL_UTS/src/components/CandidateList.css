@@ -2,3 +2,11 @@
   --padding-top: 10px;
   --padding-bottom: 10px;
 }
+
+.odd-candidate {
+  --background: rgb(225,233,249);
+}
+
+body.dark .odd-candidate {
+  --background: rgb(40,56,81);
+}

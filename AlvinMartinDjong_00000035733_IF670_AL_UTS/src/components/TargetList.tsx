@@ -9,6 +9,7 @@ import {
   IonCol,
   IonRow,
   useIonLoading,
+  useIonToast,
 } from '@ionic/react'
 import { close, returnDownBack, trash } from 'ionicons/icons'
 import React, { useRef, useState } from 'react'
@@ -17,7 +18,8 @@ import { CandidateInfo, useCandidate } from '../contexts/CandidateContext'
 import './TargetList.css'
 
 const TargetList: React.FC = () => {
-  const [ present ] = useIonLoading()
+  const [ presentLoading ] = useIonLoading()
+  const [ presentToast, dismissToast ] = useIonToast()
 
   const [showActionSheet, setShowActionSheet] = useState(false)
   const [selectedTarget, setSelectedTarget] = useState<CandidateInfo | undefined>(undefined)
@@ -32,10 +34,17 @@ const TargetList: React.FC = () => {
   }
 
   const removeFromTargetHandler = (c: CandidateInfo) => {
-    present('Loading', 1000, 'bubbles')
+    presentLoading('Loading', 1000, 'bubbles')
     slidingOptionsRef.current?.closeOpened();
     removeTarget(c)
     setSelectedTarget(undefined)
+    setTimeout(() => {
+      presentToast({
+        buttons: [{ text: 'hide', handler: () => dismissToast() }],
+        duration: 3000,
+        message: `${c.name} telah dikeluarkan dari target!`
+      })
+    }, 1000)
   }
 
   return (
@@ -48,7 +57,7 @@ const TargetList: React.FC = () => {
                 <IonIcon slot='icon-only' icon={close} />
               </IonItemOption>
             </IonItemOptions>
-            <IonItem lines="full" className='target-item'>
+            <IonItem lines="full" className={`target-item ${index % 2 === 0 ? 'odd-target' : ''}`}>
               <IonRow>
                 <IonCol>
                   <img src={c.photo} alt={c.name} width={60} height={60} />

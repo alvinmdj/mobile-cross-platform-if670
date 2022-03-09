@@ -7,7 +7,8 @@ import {
   IonItemSliding, 
   IonLabel, 
   IonRow, 
-  useIonLoading 
+  useIonLoading, 
+  useIonToast
 } from '@ionic/react'
 import { heart } from 'ionicons/icons'
 import React, { useRef } from 'react'
@@ -16,17 +17,23 @@ import { CandidateInfo, useCandidate } from '../contexts/CandidateContext'
 import './CandidateList.css'
 
 const CandidateList: React.FC = () => {
-  const [ present ] = useIonLoading()
+  const [ presentLoading ] = useIonLoading()
+  const [ presentToast, dismissToast ] = useIonToast()
 
   const { candidate, addTarget } = useCandidate()
 
   const slidingOptionsRef = useRef<HTMLIonItemSlidingElement>(null)
 
   const addToTargetHandler = (c: CandidateInfo) => {
-    present('Loading', 1500, 'bubbles')
+    presentLoading('Loading', 1500, 'bubbles')
     setTimeout(() => {
       slidingOptionsRef.current?.closeOpened();
       addTarget(c)
+      presentToast({
+        buttons: [{ text: 'hide', handler: () => dismissToast() }],
+        duration: 3000,
+        message: `${c.name} masuk ke target gebetan!`
+      })
     }, 1500)
   }
 
@@ -40,11 +47,9 @@ const CandidateList: React.FC = () => {
                 <IonIcon slot='icon-only' icon={heart} />
               </IonItemOption>
             </IonItemOptions>
-            <IonItem 
-              className='candidate-item'
-              lines="full" 
-              shape='round' 
-              color={index % 2 === 0 ? 'medium' : 'light'}
+            <IonItem
+              className={`candidate-item ${index % 2 === 0 ? 'odd-candidate' : ''}`}
+              lines="none"
             >
               <IonRow>
                 <IonCol>

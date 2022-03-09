@@ -45,7 +45,7 @@ const Home: React.FC = () => {
         >
           {randomCandidates.map((c, index) => (
             <SwiperSlide key={index}>
-              <IonCard button color='medium'>
+              <IonCard button className={index % 2 === 0 ? 'odd-card' : ''}>
                 <IonRow>
                   <IonCol size='12' class='ion-text-center' style={{ marginTop: '10px' }}>
                     <img src={c.photo} width={60} height={60} alt={c.name} />
