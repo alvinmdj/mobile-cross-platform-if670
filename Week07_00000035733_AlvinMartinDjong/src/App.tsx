@@ -24,6 +24,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import FriendsContextProvider from './data/FriendsContextProvider';
 
 setupIonicReact();
 
@@ -55,12 +56,14 @@ const App: React.FC = () => (
           </IonList>
         </IonContent>
       </IonMenu>
-      <IonRouterOutlet id='main'>
-        <Route path="/tabs" component={MailTabs} />
-        <Route path="/mail/:mailId" component={MailDetail} />
-        <Route path="/settings" component={Settings} />
-        <Redirect exact from="/" to="/tabs" />
-      </IonRouterOutlet>
+      <FriendsContextProvider>
+        <IonRouterOutlet id='main'>
+          <Route path="/tabs" component={MailTabs} />
+          <Route path="/mail/:mailId" component={MailDetail} />
+          <Route path="/settings" component={Settings} />
+          <Redirect exact from="/" to="/tabs" />
+        </IonRouterOutlet>
+      </FriendsContextProvider>
     </IonReactRouter>
   </IonApp>
 );
