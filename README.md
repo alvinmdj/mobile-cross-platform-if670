@@ -15,6 +15,8 @@ Repository for Mobile Cross Platform Programming assignments (IF670-A)
   Midterm exam application - Bosen Jomblo. Create a list of candidates user can swipe to add to their target list or remove their target. Contains usage of: react context, swiper.js, dark theme toggler, ionic list, ionic swiper, ionic loading, ionic action sheets, ionic toast, and other ionic stuffs.
   
   **Live demo**: https://bosen-jomblo.vercel.app/
+  
+  **Note**: Open in mobile screen view for better experience.
 
 - **Tugas Individu (Individual Project) - Joule Clone**
   
@@ -50,7 +52,7 @@ Repository for Mobile Cross Platform Programming assignments (IF670-A)
   
 - **Week 07 - Ionic Alert, Ionic Toast, Ionic Modal, React Context**
 
-  Continue the previous week project to add alert to confirm block & delete friend, show toast after delete / save friend, open modal box to add / edit user. Data stored within a react context (useContext hook), including functions to add, update, and delete friend.
+  Continue the previous week project to add conditional platform check (isPlatform), alert to confirm block & delete friend, show toast after delete / save friend, open modal box to add / edit user. Data stored within a react context (useContext hook), including functions to add, update, and delete friend.
 
 ## Requirements
 
