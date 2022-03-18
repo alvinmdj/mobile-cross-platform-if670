@@ -52,7 +52,7 @@ Repository for Mobile Cross Platform Programming assignments (IF670-A)
   
 - **Week 07 - Ionic Alert, Ionic Toast, Ionic Modal, React Context**
 
-  Continue the previous week project to add conditional platform check (isPlatform), alert to confirm block & delete friend, show toast after delete / save friend, open modal box to add / edit user. Data stored within a react context (useContext hook), including functions to add, update, and delete friend.
+  Continue the previous week project to add conditional platform check (isPlatform), alert, toast, and form with modal box. Data stored within a react context, including functions to add, update, and delete friend.
 
 ## Requirements
 
