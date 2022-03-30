@@ -116,7 +116,7 @@ const NewMemory: React.FC = () => {
         </IonRow>
         <IonRow>
           <IonCol>
-            <IonSelect onIonChange={selectMemoryTypeHandler} value='good'>
+            <IonSelect onIonChange={selectMemoryTypeHandler} value={chosenMemoryType}>
               <IonSelectOption value='good'>Good Memory</IonSelectOption>
               <IonSelectOption value='bad'>Bad Memory</IonSelectOption>
             </IonSelect>
