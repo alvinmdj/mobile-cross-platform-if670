@@ -55,6 +55,7 @@ Repository for Mobile Cross Platform Programming assignments (IF670-A)
   Continue the previous week project to add conditional platform check (isPlatform), alert, toast, and form with modal box. Data stored within a react context, including functions to add, update, and delete friend.
   
 - **Week 08 - Capacitor, Camera, Context**
+
   Working mostly with Ionic, React, and Capacitor to utilize camera functionality for mobile and PWA. Data, including the photo taken, managed using React context and stored locally inside local storage. Data from local storage will be called first when application starts.
 
 ## Requirements
