@@ -18,7 +18,7 @@ const GoodMemories: React.FC = () => {
           <IonTitle>Good Memories</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent class='ion-padding'>
+      <IonContent className='ion-padding'>
         <h2>Good Memories</h2>
         {isPlatform('android') && (
           <IonFab horizontal='end' vertical='bottom' slot='fixed'>
