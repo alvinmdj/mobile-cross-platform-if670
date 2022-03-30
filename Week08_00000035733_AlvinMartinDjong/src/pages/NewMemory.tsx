@@ -1,19 +1,33 @@
 import { IonApp, IonBackButton, IonButton, IonButtons, IonCol, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonRow, IonTitle, IonToolbar } from '@ionic/react'
 import { camera } from 'ionicons/icons'
-import React from 'react'
+import React, { useState } from 'react'
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera'
 
 import './NewMemory.css'
 
 const NewMemory: React.FC = () => {
+  const [takenPhoto, setTakenPhoto] = useState<{
+    path: string, // will store original URL
+    preview: string, // will store preview URL for web
+  }>()
+  
   const takePhotoHandler = async () => {
-    const image = Camera.getPhoto({
+    const photo = await Camera.getPhoto({
       resultType: CameraResultType.Uri,
       source: CameraSource.Camera,
       quality: 80,
       width: 500,
     })
-    console.log(image);
+    console.log(photo)
+
+    if (!photo || !photo.path || !photo.webPath) {
+      return
+    }
+
+    setTakenPhoto({
+      path: photo.path,
+      preview: photo.webPath,
+    })
   }
 
   return (
@@ -34,7 +48,8 @@ const NewMemory: React.FC = () => {
         <IonRow>
           <IonCol className='ion-text-center'>
             <div className="image-preview">
-              <h3>No photo choosen.</h3>
+              {!takenPhoto && <h3>No photo choosen.</h3>}
+              {takenPhoto && <img src={takenPhoto.preview} alt='Preview' />}
             </div>
             <IonButton fill='clear' onClick={takePhotoHandler}>
               <IonIcon slot='start' icon={camera} />
