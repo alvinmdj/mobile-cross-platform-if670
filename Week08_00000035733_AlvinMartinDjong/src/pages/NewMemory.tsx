@@ -1,15 +1,29 @@
-import { IonApp, IonBackButton, IonButton, IonButtons, IonCol, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonRow, IonTitle, IonToolbar } from '@ionic/react'
-import { camera } from 'ionicons/icons'
-import React, { useState } from 'react'
-import { Camera, CameraResultType, CameraSource } from '@capacitor/camera'
-
-import './NewMemory.css'
+import React, { useState } from 'react';
+import {
+  IonApp,
+  IonBackButton,
+  IonButton,
+  IonButtons,
+  IonCol,
+  IonContent,
+  IonHeader,
+  IonIcon,
+  IonInput,
+  IonItem,
+  IonLabel,
+  IonRow,
+  IonTitle,
+  IonToolbar
+} from '@ionic/react';
+import { camera } from 'ionicons/icons';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import './NewMemory.css';
 
 const NewMemory: React.FC = () => {
   const [takenPhoto, setTakenPhoto] = useState<{
     path: string, // will store original URL
     preview: string, // will store preview URL for web
-  }>()
+  }>();
   
   const takePhotoHandler = async () => {
     const photo = await Camera.getPhoto({
@@ -17,18 +31,18 @@ const NewMemory: React.FC = () => {
       source: CameraSource.Camera,
       quality: 80,
       width: 500,
-    })
-    console.log(photo)
+    });
+    console.log(photo);
 
     if (!photo || !photo.path || !photo.webPath) {
-      return
+      return;
     }
 
     setTakenPhoto({
       path: photo.path,
       preview: photo.webPath,
-    })
-  }
+    });
+  };
 
   return (
     <IonApp>
@@ -64,7 +78,7 @@ const NewMemory: React.FC = () => {
         </IonRow>
       </IonContent>
     </IonApp>
-  )
-}
+  );
+};
 
-export default NewMemory
+export default NewMemory;

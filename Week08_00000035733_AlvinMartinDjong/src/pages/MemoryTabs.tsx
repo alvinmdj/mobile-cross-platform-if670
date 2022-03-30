@@ -1,13 +1,20 @@
-import React from 'react'
-import { IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react'
-import { Route, Redirect, useLocation } from 'react-router'
-import { happyOutline, sadOutline } from 'ionicons/icons'
-import BadMemories from './BadMemories'
-import GoodMemories from './GoodMemories'
-import NewMemory from './NewMemory'
+import React from 'react';
+import {
+  IonIcon,
+  IonLabel,
+  IonRouterOutlet,
+  IonTabBar,
+  IonTabButton,
+  IonTabs
+} from '@ionic/react';
+import { Route, Redirect, useLocation } from 'react-router';
+import { happyOutline, sadOutline } from 'ionicons/icons';
+import BadMemories from './BadMemories';
+import GoodMemories from './GoodMemories';
+import NewMemory from './NewMemory';
 
 const MemoryTabs: React.FC = () => {
-  const { pathname } = useLocation()
+  const { pathname } = useLocation();
 
   return (
     <IonTabs>
@@ -28,7 +35,7 @@ const MemoryTabs: React.FC = () => {
         </IonTabButton>
       </IonTabBar>
     </IonTabs>
-  )
-}
+  );
+};
 
-export default MemoryTabs
+export default MemoryTabs;

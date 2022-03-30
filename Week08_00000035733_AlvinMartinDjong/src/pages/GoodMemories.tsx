@@ -1,7 +1,18 @@
-import { isPlatform } from '@ionic/core'
-import { IonApp, IonButton, IonButtons, IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonTitle, IonToolbar } from '@ionic/react'
-import { addOutline } from 'ionicons/icons'
-import React from 'react'
+import { isPlatform } from '@ionic/core';
+import {
+  IonApp,
+  IonButton,
+  IonButtons,
+  IonContent,
+  IonFab,
+  IonFabButton,
+  IonHeader,
+  IonIcon,
+  IonTitle,
+  IonToolbar
+} from '@ionic/react';
+import { addOutline } from 'ionicons/icons';
+import React from 'react';
 
 const GoodMemories: React.FC = () => {
   return (
@@ -29,7 +40,7 @@ const GoodMemories: React.FC = () => {
         )}
       </IonContent>
     </IonApp>
-  )
-}
+  );
+};
 
-export default GoodMemories
+export default GoodMemories;
