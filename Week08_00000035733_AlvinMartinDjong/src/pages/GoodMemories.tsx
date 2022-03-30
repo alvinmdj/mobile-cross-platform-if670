@@ -26,7 +26,7 @@ const GoodMemories: React.FC = () => {
   return (
     <IonApp>
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color='success'>
           {!isPlatform('android') && (
             <IonButtons slot='end'>
               <IonButton routerLink='/tabs/new'>
@@ -52,7 +52,7 @@ const GoodMemories: React.FC = () => {
         </IonGrid>
         {isPlatform('android') && (
           <IonFab horizontal='end' vertical='bottom' slot='fixed'>
-            <IonFabButton color='primary' routerLink='/tabs/new'>
+            <IonFabButton color='success' routerLink='/tabs/new'>
               <IonIcon icon={addOutline} />
             </IonFabButton>
           </IonFab>

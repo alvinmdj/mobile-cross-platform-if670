@@ -24,7 +24,7 @@ const MemoryTabs: React.FC = () => {
         <Route exact path='/tabs/good' component={GoodMemories} />
         <Route exact path='/tabs/bad' component={BadMemories} />
       </IonRouterOutlet>
-      <IonTabBar slot='bottom'>
+      <IonTabBar slot='bottom' color={pathname.includes('good') ? 'success' : pathname.includes('bad') ? 'danger' : 'primary' }>
         <IonTabButton selected={pathname.includes('good')} tab='good' href='/tabs/good'>
           <IonIcon icon={happyOutline} />
           <IonLabel>Good Memories</IonLabel>

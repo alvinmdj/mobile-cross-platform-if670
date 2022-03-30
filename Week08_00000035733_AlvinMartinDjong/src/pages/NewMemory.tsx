@@ -98,7 +98,7 @@ const NewMemory: React.FC = () => {
   return (
     <IonApp>
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color='primary'>
           <IonButtons slot="start">
             <IonBackButton defaultHref='/' />
           </IonButtons>
