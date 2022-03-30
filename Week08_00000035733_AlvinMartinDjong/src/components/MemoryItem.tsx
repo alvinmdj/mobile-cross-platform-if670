@@ -12,7 +12,7 @@ interface Props {
 
 const MemoryItem: React.FC<Props> = ({ memory }) => {
   return (
-    <IonRow key={memory.id}>
+    <IonRow>
       <IonCol>
         <IonCard>
           <img src={memory.base64Url} alt={memory.title} />

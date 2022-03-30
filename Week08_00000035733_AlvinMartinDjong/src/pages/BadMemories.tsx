@@ -47,7 +47,7 @@ const BadMemories: React.FC = () => {
             </IonRow>
           )}
           {badMemories.map(memory => (
-            <MemoryItem memory={memory} />
+            <MemoryItem memory={memory} key={memory.id} />
           ))}
         </IonGrid>
         {isPlatform('android') && (
