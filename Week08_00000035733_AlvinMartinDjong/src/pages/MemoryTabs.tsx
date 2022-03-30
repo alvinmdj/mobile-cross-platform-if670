@@ -4,6 +4,7 @@ import { Route, Redirect, useLocation } from 'react-router'
 import { happyOutline, sadOutline } from 'ionicons/icons'
 import BadMemories from './BadMemories'
 import GoodMemories from './GoodMemories'
+import NewMemory from './NewMemory'
 
 const MemoryTabs: React.FC = () => {
   const { pathname } = useLocation()
@@ -12,6 +13,7 @@ const MemoryTabs: React.FC = () => {
     <IonTabs>
       <IonRouterOutlet>
         <Redirect exact path='/tabs' to='tabs/good' />
+        <Route exact path='/tabs/new' component={NewMemory} />
         <Route exact path='/tabs/good' component={GoodMemories} />
         <Route exact path='/tabs/bad' component={BadMemories} />
       </IonRouterOutlet>
