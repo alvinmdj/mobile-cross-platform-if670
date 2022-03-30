@@ -1,5 +1,8 @@
-import { IonApp, IonBackButton, IonButtons, IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/react'
+import { IonApp, IonBackButton, IonButton, IonButtons, IonCol, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonRow, IonTitle, IonToolbar } from '@ionic/react'
+import { camera } from 'ionicons/icons'
 import React from 'react'
+
+import './NewMemory.css'
 
 const NewMemory: React.FC = () => {
   return (
@@ -12,8 +15,27 @@ const NewMemory: React.FC = () => {
           <IonTitle>Add New Memory</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent class='ion-padding'>
-        <h2>New Memory</h2>
+      <IonContent className='ion-padding'>
+        <IonItem>
+          <IonLabel position="floating">Memory Title</IonLabel>
+          <IonInput></IonInput>
+        </IonItem>
+        <IonRow>
+          <IonCol className='ion-text-center'>
+            <div className="image-preview">
+              <h3>No photo choosen.</h3>
+            </div>
+            <IonButton fill='clear'>
+              <IonIcon slot='start' icon={camera} />
+              <IonLabel>Take Photo</IonLabel>
+            </IonButton>
+          </IonCol>
+        </IonRow>
+        <IonRow className='ion-margin-top'>
+          <IonCol className='ion-text-center'>
+            <IonButton>Add Memory</IonButton>
+          </IonCol>
+        </IonRow>
       </IonContent>
     </IonApp>
   )

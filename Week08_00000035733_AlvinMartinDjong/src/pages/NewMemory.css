@@ -1,0 +1,13 @@
+.image-preview {
+  width: 120px;
+  height: 120px;
+  margin: 20px auto;
+  padding: 40px 0;
+  border: 3px solid gainsboro;
+}
+
+.image-preview h3 {
+  font-size: 14px;
+  text-align: center;
+  margin: 0;
+}
