@@ -3,9 +3,6 @@ import {
   IonApp,
   IonButton,
   IonButtons,
-  IonCard,
-  IonCardHeader,
-  IonCardTitle,
   IonCol,
   IonContent,
   IonFab,
@@ -19,6 +16,7 @@ import {
 } from '@ionic/react';
 import { addOutline } from 'ionicons/icons';
 import React, { useContext } from 'react';
+import MemoryItem from '../components/MemoryItem';
 import MemoriesContext from '../data/memories-context';
 
 const BadMemories: React.FC = () => {
@@ -49,16 +47,7 @@ const BadMemories: React.FC = () => {
             </IonRow>
           )}
           {badMemories.map(memory => (
-            <IonRow key={memory.id}>
-              <IonCol>
-                <IonCard>
-                  <img src={memory.base64Url} alt={memory.title} />
-                  <IonCardHeader>
-                    <IonCardTitle>{memory.title}</IonCardTitle>
-                  </IonCardHeader>
-                </IonCard>
-              </IonCol>
-            </IonRow>
+            <MemoryItem memory={memory} />
           ))}
         </IonGrid>
         {isPlatform('android') && (
