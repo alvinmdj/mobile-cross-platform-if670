@@ -20,9 +20,9 @@ import {
 import { camera } from 'ionicons/icons';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { Directory, Filesystem } from '@capacitor/filesystem';
-import './NewMemory.css';
-import MemoriesContext from '../data/memories-context';
 import { useHistory } from 'react-router';
+import MemoriesContext from '../data/memories-context';
+import './NewMemory.css';
 
 export async function base64FromPath(path: string): Promise<string> {
   const response = await fetch(path);
@@ -79,6 +79,7 @@ const NewMemory: React.FC = () => {
   const addMemoryHandler = async () => {
     const enteredTitle = titleRef.current?.value;
     if (!enteredTitle || enteredTitle.toString().trim().length === 0 || !takenPhoto || !chosenMemoryType) {
+      console.log(takenPhoto);
       return;
     }
 
@@ -124,7 +125,7 @@ const NewMemory: React.FC = () => {
         <IonRow>
           <IonCol className='ion-text-center'>
             <div className="image-preview">
-              {!takenPhoto && <h3>No photo choosen.</h3>}
+              {!takenPhoto && <h3>No photo chosen.</h3>}
               {takenPhoto && <img src={takenPhoto.preview} alt='Preview' />}
             </div>
             <IonButton fill='clear' onClick={takePhotoHandler}>
