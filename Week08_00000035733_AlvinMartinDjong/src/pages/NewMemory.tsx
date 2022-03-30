@@ -46,7 +46,7 @@ const NewMemory: React.FC = () => {
   const history = useHistory();
 
   const [takenPhoto, setTakenPhoto] = useState<{
-    path: string, // will store original URL
+    path: string | undefined, // will store original URL
     preview: string, // will store preview URL for web
   }>();
   const [chosenMemoryType, setChosenMemoryType] = useState<'good' | 'bad'>('good');
@@ -66,7 +66,7 @@ const NewMemory: React.FC = () => {
     });
     console.log(photo);
 
-    if (!photo || !photo.path || !photo.webPath) {
+    if (!photo || /* !photo.path || */ !photo.webPath) {
       return;
     }
 
