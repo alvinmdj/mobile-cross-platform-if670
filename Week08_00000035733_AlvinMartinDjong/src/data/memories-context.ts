@@ -11,9 +11,11 @@ export interface Memory {
 const MemoriesContext = React.createContext<{
   memories: Memory[];
   addMemory: (path: string, base64Url: string, title: string, type: 'good' | 'bad') => void;
+  initContext: () => void;
 }>({
   memories: [],
   addMemory: () => {},
+  initContext: () => {},
 });
 
 export default MemoriesContext;

@@ -21,21 +21,32 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import { Route, Redirect } from 'react-router';
 import MemoryTabs from './pages/MemoryTabs';
-import MemoriesContextProvider from './data/MemoriesContextProvider';
+// import MemoriesContextProvider from './data/MemoriesContextProvider';
+import { useContext, useEffect } from 'react';
+import MemoriesContext from './data/memories-context';
 
 setupIonicReact();
 
-const App: React.FC = () => (
-  <MemoriesContextProvider>
-    <IonApp>
-      <IonReactRouter>
-        <IonRouterOutlet>
-          <Route path='/tabs' component={MemoryTabs} />
-          <Redirect exact from='/' to='/tabs' />
-        </IonRouterOutlet>
-      </IonReactRouter>
-    </IonApp>
-  </MemoriesContextProvider>
-);
+const App: React.FC = () => {
+  const memoriesCtx = useContext(MemoriesContext);
+  const { initContext } = memoriesCtx;
+  
+  useEffect(() => {
+    initContext();
+  }, [initContext]);
+
+  return (
+    // <MemoriesContextProvider>
+      <IonApp>
+        <IonReactRouter>
+          <IonRouterOutlet>
+            <Route path='/tabs' component={MemoryTabs} />
+            <Redirect exact from='/' to='/tabs' />
+          </IonRouterOutlet>
+        </IonReactRouter>
+      </IonApp>
+    // </MemoriesContextProvider>
+  );
+};
 
 export default App;
