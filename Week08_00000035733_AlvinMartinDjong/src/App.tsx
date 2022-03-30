@@ -1,5 +1,10 @@
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+import { Route, Redirect } from 'react-router';
+import { useContext, useEffect } from 'react';
+import MemoryTabs from './pages/MemoryTabs';
+// import MemoriesContextProvider from './data/MemoriesContextProvider';
+import MemoriesContext from './data/memories-context';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -19,11 +24,6 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import { Route, Redirect } from 'react-router';
-import MemoryTabs from './pages/MemoryTabs';
-// import MemoriesContextProvider from './data/MemoriesContextProvider';
-import { useContext, useEffect } from 'react';
-import MemoriesContext from './data/memories-context';
 
 setupIonicReact();
 
