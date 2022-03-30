@@ -102,7 +102,7 @@ ionic serve
 ```
 
 - Create a build for web app, this command will run 'react-scripts build':
-```node
+```sh
 # same as 'npm run build'
 ionic build
 ```
