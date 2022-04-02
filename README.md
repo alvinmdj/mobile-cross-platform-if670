@@ -57,6 +57,8 @@ Repository for Mobile Cross Platform Programming assignments (IF670-A)
 - **Week 08 - Capacitor, Camera, Context**
 
   Working mostly with Ionic, React, and Capacitor to utilize camera functionality for mobile and PWA. User can takes photo using a mobile device or from web browser (PWA). Data, including the photo taken, managed within React context and stored locally inside local storage. Data from local storage will be called first when application starts (apply to both web and mobile).
+  
+  **Live demo**: https://ionic-camera-pwa.vercel.app/
 
 ## Requirements
 
