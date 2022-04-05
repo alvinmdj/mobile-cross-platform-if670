@@ -1,6 +1,7 @@
 import { Directory, Filesystem } from '@capacitor/filesystem';
 import React, { useCallback, useEffect, useState } from 'react';
 import MemoriesContext, { Memory } from './memories-context';
+import { Storage } from '@capacitor/storage';
 
 const MemoriesContextProvider: React.FC = props => {
   const [memories, setMemories] = useState<Memory[]>([]);
@@ -14,8 +15,7 @@ const MemoriesContextProvider: React.FC = props => {
         type: memory.type,
       };
     });
-    // Storage.set({ key: 'memories', value: JSON.stringify(storableMemories) });
-    localStorage.setItem('memories', JSON.stringify(storableMemories));
+    Storage.set({ key: 'memories', value: JSON.stringify(storableMemories) });
   }, [memories]);
   
   const addMemory = (path: string, base64Data: string, title: string, type: 'good' | 'bad') => {
@@ -30,10 +30,8 @@ const MemoriesContextProvider: React.FC = props => {
   };
 
   const initContext = useCallback(async () => {
-    // const memoriesData = await Storage.get({ key: 'memories' });
-    // const storedMemories = memoriesData.value ? JSON.parse(memoriesData.value) : [];
-    const memoriesData = await localStorage.getItem('memories');
-    const storedMemories = memoriesData ? JSON.parse(memoriesData) : [];
+    const memoriesData = await Storage.get({ key: 'memories' });
+    const storedMemories = memoriesData.value ? JSON.parse(memoriesData.value) : [];
     const loadedMemories: Memory[] = [];
     for (const storedMemory of storedMemories) {
       const file = await Filesystem.readFile({
