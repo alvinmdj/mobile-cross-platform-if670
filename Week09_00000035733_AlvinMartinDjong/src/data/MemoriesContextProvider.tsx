@@ -13,18 +13,22 @@ const MemoriesContextProvider: React.FC = props => {
         title: memory.title,
         imagePath: memory.imagePath,
         type: memory.type,
+        lat: memory.lat,
+        lng: memory.lng,
       };
     });
     Storage.set({ key: 'memories', value: JSON.stringify(storableMemories) });
   }, [memories]);
   
-  const addMemory = (path: string, base64Data: string, title: string, type: 'good' | 'bad') => {
+  const addMemory = (path: string, base64Data: string, title: string, type: 'good' | 'bad', lat: number, lng: number) => {
     const newMemory: Memory = {
       id: Math.random().toString(),
       title,
       type,
       imagePath: path,
       base64Url: base64Data,
+      lat,
+      lng,
     };
     setMemories(currMemories => [...currMemories, newMemory]);
   };
@@ -44,6 +48,8 @@ const MemoriesContextProvider: React.FC = props => {
         type: storedMemory.type,
         imagePath: storedMemory.imagePath,
         base64Url: 'data:image/jpeg;base64,' + file.data,
+        lat: storedMemory.lat,
+        lng: storedMemory.lng,
       });
     }
     setMemories(loadedMemories);

@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import {
   IonApp,
   IonBackButton,
@@ -17,14 +17,16 @@ import {
   IonTitle,
   IonToolbar
 } from '@ionic/react';
+import { useHistory } from 'react-router';
 import { camera } from 'ionicons/icons';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { Directory, Filesystem } from '@capacitor/filesystem';
-import { useHistory } from 'react-router';
+import { Geolocation } from '@capacitor/geolocation';
+import { GoogleMap, Marker } from '@react-google-maps/api';
 import MemoriesContext from '../data/memories-context';
 import './NewMemory.css';
 
-export async function base64FromPath(path: string): Promise<string> {
+async function base64FromPath(path: string): Promise<string> {
   const response = await fetch(path);
   const blob = await response.blob();
   return new Promise((resolve, reject) => {
@@ -44,6 +46,9 @@ export async function base64FromPath(path: string): Promise<string> {
 const NewMemory: React.FC = () => {
   const memoriesCtx = useContext(MemoriesContext);
   const history = useHistory();
+
+  const [lat, setLat] = useState(0);
+  const [lng, setLng] = useState(0);
 
   const [takenPhoto, setTakenPhoto] = useState<{
     path: string | undefined, // will store original URL
@@ -78,8 +83,10 @@ const NewMemory: React.FC = () => {
 
   const addMemoryHandler = async () => {
     const enteredTitle = titleRef.current?.value;
-    if (!enteredTitle || enteredTitle.toString().trim().length === 0 || !takenPhoto || !chosenMemoryType) {
-      console.log(takenPhoto);
+    if (!enteredTitle || enteredTitle.toString().trim().length === 0 || !takenPhoto) {
+      console.log('Entered title: ', enteredTitle);
+      console.log('Taken photo:', takenPhoto);
+      console.log(`Lat, Lng: ${lat}, ${lng}`);
       return;
     }
 
@@ -91,8 +98,30 @@ const NewMemory: React.FC = () => {
       directory: Directory.Data,
     });
 
-    memoriesCtx.addMemory(fileName, base64, enteredTitle.toString(), chosenMemoryType);
-    history.length > 0 ? history.goBack() : history.replace('/tabs/good');
+    memoriesCtx.addMemory(fileName, base64, enteredTitle.toString(), chosenMemoryType, lat, lng);
+    chosenMemoryType === 'good' ? history.push('/tabs/good') : history.push('/tabs/bad');
+  };
+
+  const selectPosition = (e: google.maps.MapMouseEvent) => {
+    if (e.latLng?.lat()) { setLat(e.latLng?.lat()); }
+    if (e.latLng?.lng()) { setLng(e.latLng?.lng()); }
+  }
+
+  useEffect(() => {
+    const getCurrentPosition = async () => {
+      const coordinates = await Geolocation.getCurrentPosition({ enableHighAccuracy: true });
+      setLat(coordinates.coords.latitude);
+      setLng(coordinates.coords.longitude);
+    };
+    getCurrentPosition();
+  }, []);
+
+  const containerStyle = {
+    margin: 'auto',
+    width: '90%',
+    height: '90%',
+    maxWidth: '320px',
+    maxHeight: '320px',
   };
 
   return (
@@ -134,6 +163,14 @@ const NewMemory: React.FC = () => {
             </IonButton>
           </IonCol>
         </IonRow>
+        <GoogleMap
+          mapContainerStyle={ containerStyle }
+          center={{ lat, lng }}
+          zoom={18}
+          onClick={selectPosition}
+        >
+          <Marker position={{ lat, lng }} />
+        </GoogleMap>
         <IonRow className='ion-margin-top'>
           <IonCol className='ion-text-center'>
             <IonButton onClick={addMemoryHandler}>Add Memory</IonButton>

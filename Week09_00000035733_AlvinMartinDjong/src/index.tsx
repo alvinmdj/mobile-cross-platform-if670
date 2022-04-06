@@ -5,13 +5,16 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import MemoriesContextProvider from './data/MemoriesContextProvider';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
+import { LoadScript } from '@react-google-maps/api';
 
 defineCustomElements(window);
 
 ReactDOM.render(
   <React.StrictMode>
     <MemoriesContextProvider>
-      <App />
+      <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY!}>
+        <App />
+      </LoadScript>
     </MemoriesContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
