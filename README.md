@@ -7,8 +7,9 @@ Repository for Mobile Cross Platform Programming assignments (IF670-A)
 - [Ionic](https://ionicframework.com/)
 - [Capacitor with Ionic](https://capacitorjs.com/docs/getting-started/with-ionic)
 - [React](https://reactjs.org/)
-- chrome://inspect/#devices -> inspect device (debug Android with JavaScript console log)
 - [Capactior Live Reload](https://capacitorjs.com/docs/guides/live-reload)
+- [react-google-maps-api](https://react-google-maps-api-docs.netlify.app/#section-getting-started)
+- chrome://inspect/#devices -> inspect device (debug Android app with JavaScript console log)
 
 ## What's inside this repo
 
