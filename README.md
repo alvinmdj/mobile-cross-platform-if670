@@ -134,3 +134,9 @@ ionic capacitor sync android
 ```sh
 ionic capacitor open android
 ```
+
+- Run Android with VS Code
+
+```sh
+npx cap sync android
+```
