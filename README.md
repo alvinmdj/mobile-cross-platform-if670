@@ -8,6 +8,7 @@ Repository for Mobile Cross Platform Programming assignments (IF670-A)
 - [Capacitor with Ionic](https://capacitorjs.com/docs/getting-started/with-ionic)
 - [React](https://reactjs.org/)
 - chrome://inspect/#devices -> inspect device (debug Android with JavaScript console log)
+- [Capactior Live Reload](https://capacitorjs.com/docs/guides/live-reload)
 
 ## What's inside this repo
 
