@@ -11,11 +11,11 @@ defineCustomElements(window);
 
 ReactDOM.render(
   <React.StrictMode>
-    <MemoriesContextProvider>
-      <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY!}>
+    <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY!}>
+      <MemoriesContextProvider>
         <App />
-      </LoadScript>
-    </MemoriesContextProvider>
+      </MemoriesContextProvider>
+    </LoadScript>
   </React.StrictMode>,
   document.getElementById('root')
 );
