@@ -140,5 +140,6 @@ ionic capacitor open android
 - Run Android with VS Code
 
 ```sh
+ionic build
 npx cap run android
 ```
