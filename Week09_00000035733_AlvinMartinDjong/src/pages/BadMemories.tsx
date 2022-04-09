@@ -1,6 +1,5 @@
 import { isPlatform } from '@ionic/core';
 import {
-  IonApp,
   IonButton,
   IonButtons,
   IonCol,
@@ -10,6 +9,7 @@ import {
   IonGrid,
   IonHeader,
   IonIcon,
+  IonPage,
   IonRow,
   IonTitle,
   IonToolbar
@@ -24,7 +24,7 @@ const BadMemories: React.FC = () => {
   const badMemories = memoriesCtx.memories.filter(memory => memory.type === 'bad');
 
   return (
-    <IonApp>
+    <IonPage>
       <IonHeader>
         <IonToolbar color='danger'>
           {!isPlatform('android') && (
@@ -58,7 +58,7 @@ const BadMemories: React.FC = () => {
           </IonFab>
         )}
       </IonContent>
-    </IonApp>
+    </IonPage>
   );
 };
 

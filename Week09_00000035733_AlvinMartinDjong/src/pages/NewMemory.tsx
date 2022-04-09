@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import {
-  IonApp,
   IonBackButton,
   IonButton,
   IonButtons,
@@ -11,6 +10,7 @@ import {
   IonInput,
   IonItem,
   IonLabel,
+  IonPage,
   IonRow,
   IonSelect,
   IonSelectOption,
@@ -125,7 +125,7 @@ const NewMemory: React.FC = () => {
   };
 
   return (
-    <IonApp>
+    <IonPage>
       <IonHeader>
         <IonToolbar color='primary'>
           <IonButtons slot="start">
@@ -177,7 +177,7 @@ const NewMemory: React.FC = () => {
           </IonCol>
         </IonRow>
       </IonContent>
-    </IonApp>
+    </IonPage>
   );
 };
 
