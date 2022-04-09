@@ -61,13 +61,13 @@ Repository for Mobile Cross Platform Programming assignments (IF670-A)
 
   Working mostly with Ionic, React, and Capacitor to utilize camera functionality for mobile and PWA. User can takes photo using a mobile device or from web browser (PWA). Data, including the photo taken, managed within React context and stored locally inside local storage. Data from local storage will be called first when application starts (apply to both web and mobile).
   
-  **Live demo**: https://ionic-camera-pwa.vercel.app/
-  
 - **Week 09 - Capacitor Geolocations & React Google Maps API**
 
-  Continue previous week project to implement Google Maps when adding new memory and view memories.
+  Continue previous week project to implement Google Maps when adding new memory and view memories. Also utilizes Capacitor geolocation package to locate current location.
   
   **Note**: copy ```.env.example``` to ```.env.local``` and setup the google maps API key.
+  
+  **Live demo**: https://ionic-camera-map-pwa.vercel.app/
 
 ## Requirements
 
