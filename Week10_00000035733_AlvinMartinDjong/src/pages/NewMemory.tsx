@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import {
   IonApp,
   IonBackButton,
@@ -19,9 +19,7 @@ import {
 } from '@ionic/react';
 import { camera } from 'ionicons/icons';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
-import { Directory, Filesystem } from '@capacitor/filesystem';
 import { useHistory } from 'react-router';
-import MemoriesContext from '../data/memories-context';
 import './NewMemory.css';
 
 export async function base64FromPath(path: string): Promise<string> {
@@ -42,7 +40,8 @@ export async function base64FromPath(path: string): Promise<string> {
 };
 
 const NewMemory: React.FC = () => {
-  const memoriesCtx = useContext(MemoriesContext);
+  const URL = 'http://localhost/crossplatform-w10/insert_new_memory.php';
+
   const history = useHistory();
 
   const [takenPhoto, setTakenPhoto] = useState<{
@@ -83,16 +82,26 @@ const NewMemory: React.FC = () => {
       return;
     }
 
-    const fileName = new Date().getTime() + '.jpeg';
-    const base64 = await base64FromPath(takenPhoto!.preview);
-    await Filesystem.writeFile({
-      path: fileName,
-      data: base64,
-      directory: Directory.Data,
-    });
+    const formData = new FormData();
 
-    memoriesCtx.addMemory(fileName, base64, enteredTitle.toString(), chosenMemoryType);
-    history.length > 0 ? history.goBack() : history.replace('/tabs/good');
+    const inputTitle = enteredTitle.toString().trim() as string;
+    const inputType = chosenMemoryType as string;
+    const photoName = new Date().getTime() + '.jpeg' as string;
+    const photoBlob = await fetch(takenPhoto.preview).then(r => r.blob());
+
+    formData.append('title', inputTitle);
+    formData.append('type', inputType);
+    formData.append('photoName', photoName);
+    formData.append('photo', photoBlob as File);
+
+    fetch(URL, {
+      method: 'POST',
+      body: formData,
+    }).then((response) => response.text()).then((data) => {
+      console.log(data);
+    }).finally(() => {
+      chosenMemoryType === 'good' ? history.push('/tabs/good') : history.push('/tabs/bad');
+    });
   };
 
   return (

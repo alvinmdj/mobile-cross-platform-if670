@@ -3,10 +3,10 @@ import React from 'react'
 
 interface Props {
   memory: {
-    id: string;
+    id: string,
     title: string;
-    base64Url: string;
     type: string;
+    photo: string;
   };
 };
 
@@ -15,7 +15,8 @@ const MemoryItem: React.FC<Props> = ({ memory }) => {
     <IonRow>
       <IonCol>
         <IonCard>
-          <img src={memory.base64Url} alt={memory.title} />
+          <img src={'http://localhost/crossplatform-w10/' +
+            (memory.photo ? memory.photo : 'uploads/dio.png')} alt={memory.title} />
           <IonCardHeader>
             <IonCardTitle>{memory.title}</IonCardTitle>
           </IonCardHeader>

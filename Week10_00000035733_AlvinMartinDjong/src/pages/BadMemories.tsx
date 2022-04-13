@@ -15,13 +15,28 @@ import {
   IonToolbar
 } from '@ionic/react';
 import { addOutline } from 'ionicons/icons';
-import React, { useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import MemoryItem from '../components/MemoryItem';
-import MemoriesContext from '../data/memories-context';
+
+interface Memory {
+  id: string,
+  title: string;
+  type: string;
+  photo: string;
+}
 
 const BadMemories: React.FC = () => {
-  const memoriesCtx = useContext(MemoriesContext);
-  const badMemories = memoriesCtx.memories.filter(memory => memory.type === 'bad');
+  const URL = 'http://localhost/crossplatform-w10/select_all_bad_memory.php';
+  const [badMemories, setBadMemories] = useState<Array<Memory>>([]);
+
+  useEffect(() => {
+    fetch(URL)
+      .then(response => response.json())
+      .then(data => {
+        // console.log(data.memories);
+        setBadMemories(data.memories);
+      });
+  }, []);
 
   return (
     <IonApp>
@@ -39,14 +54,14 @@ const BadMemories: React.FC = () => {
       </IonHeader>
       <IonContent className='ion-padding'>
         <IonGrid>
-          {badMemories.length === 0 && (
+          {!badMemories && (
             <IonRow>
               <IonCol className='ion-text-center'>
                 <h2>No bad memories found.</h2>
               </IonCol>
             </IonRow>
           )}
-          {badMemories.map(memory => (
+          {badMemories && badMemories.map(memory => (
             <MemoryItem memory={memory} key={memory.id} />
           ))}
         </IonGrid>
