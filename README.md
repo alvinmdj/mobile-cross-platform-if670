@@ -69,6 +69,12 @@ Repository for Mobile Cross Platform Programming assignments (IF670-A)
   
   **Live demo**: https://ionic-camera-map-pwa.vercel.app/
 
+- **Week 10 - Fetch data from API (HTTP Request)**
+
+  Refactoring code structure from week 8 project: remove contexts and local storage implementation, replaced with API fetching (GET & POST) and store data in database (MySQL).
+  
+  **Note**: Requires the [Project API & SQL file](https://github.com/alvinmdj/mobile-cross-platform-api-w10).
+
 ## Requirements
 
 - [Node.js](https://nodejs.org/)
