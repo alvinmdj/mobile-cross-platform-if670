@@ -30,7 +30,7 @@ const BadMemories: React.FC = () => {
     const querySnapshot = await getDocs(q);
 
     if (querySnapshot.docs.length > 0) {
-      console.log(querySnapshot.docs);
+      // console.log(querySnapshot.docs);
       setBadMemories(querySnapshot.docs.map((doc) => {
         return {
           id: doc.id,
@@ -41,9 +41,9 @@ const BadMemories: React.FC = () => {
       }));
     }
 
-    querySnapshot.forEach((doc) => {
-      console.log('doc:', doc.data());
-    });
+    // querySnapshot.forEach((doc) => {
+    //   console.log('doc:', doc.data());
+    // });
   }
 
   useEffect(() => {

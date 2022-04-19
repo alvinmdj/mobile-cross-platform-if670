@@ -28,7 +28,7 @@ const GoodMemories: React.FC = () => {
     const q = query(memoriesRef, where('type', '==', 'good'));
 
     const querySnapshot = await getDocs(q);
-    console.log('querySnapshot:', querySnapshot);
+    // console.log('querySnapshot:', querySnapshot);
     setGoodMemories(querySnapshot.docs.map((doc) => {
       return {
         id: doc.id,
@@ -38,9 +38,9 @@ const GoodMemories: React.FC = () => {
       };
     }));
 
-    querySnapshot.forEach((doc) => {
-      console.log('doc:', doc.data());
-    });
+    // querySnapshot.forEach((doc) => {
+    //   console.log('doc:', doc.data());
+    // });
   }
 
   useEffect(() => {
