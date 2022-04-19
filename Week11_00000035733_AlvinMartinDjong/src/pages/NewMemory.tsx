@@ -20,7 +20,10 @@ import {
 import { camera } from 'ionicons/icons';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { useHistory } from 'react-router';
+import { addDoc, collection } from 'firebase/firestore';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import './NewMemory.css';
+import { db, storage } from '../services/firebase';
 
 export async function base64FromPath(path: string): Promise<string> {
   const response = await fetch(path);
@@ -40,10 +43,9 @@ export async function base64FromPath(path: string): Promise<string> {
 };
 
 const NewMemory: React.FC = () => {
-  const URL = 'http://localhost/crossplatform-w10/insert_new_memory.php';
-
   const history = useHistory();
 
+  const [disabled, setDisabled] = useState(false);
   const [takenPhoto, setTakenPhoto] = useState<{
     path: string | undefined, // will store original URL
     preview: string, // will store preview URL for web
@@ -75,32 +77,45 @@ const NewMemory: React.FC = () => {
     });
   };
 
+  const addMemory = async (title: string, photoName: string, photoUrl: string) => {
+    try {
+      const docRef = await addDoc(collection(db, 'memories'), {
+        title,
+        type: chosenMemoryType as string,
+        photoName,
+        photoUrl,
+      });
+      console.log('doc written with id:', docRef.id);
+    } catch (error) {
+      console.error('Error adding document:', error);
+    } finally {
+      chosenMemoryType === 'good' ? history.push('/tabs/good') : history.push('/tabs/bad');
+    }
+  }
+
   const addMemoryHandler = async () => {
+    setDisabled(true);
+
     const enteredTitle = titleRef.current?.value;
     if (!enteredTitle || enteredTitle.toString().trim().length === 0 || !takenPhoto || !chosenMemoryType) {
       console.log(takenPhoto);
+      setDisabled(false);
       return;
     }
 
-    const formData = new FormData();
+    const memoryTitle = enteredTitle.toString().trim() as string;
+    const photoName =  new Date().getTime() + '.jpeg' as string;
+    const photoBlob = await fetch(takenPhoto.preview).then(res => res.blob());
 
-    const inputTitle = enteredTitle.toString().trim() as string;
-    const inputType = chosenMemoryType as string;
-    const photoName = new Date().getTime() + '.jpeg' as string;
-    const photoBlob = await fetch(takenPhoto.preview).then(r => r.blob());
-
-    formData.append('title', inputTitle);
-    formData.append('type', inputType);
-    formData.append('photoName', photoName);
-    formData.append('photo', photoBlob as File);
-
-    fetch(URL, {
-      method: 'POST',
-      body: formData,
-    }).then((response) => response.text()).then((data) => {
-      console.log(data);
-    }).finally(() => {
-      chosenMemoryType === 'good' ? history.push('/tabs/good') : history.push('/tabs/bad');
+    // store image in firebase storage
+    const storageRef = ref(storage, photoName);
+    uploadBytes(storageRef, photoBlob).then((snapshot) => {
+      console.log('photo uploaded', snapshot);
+      getDownloadURL(ref(storage, photoName)).then((photoUrl) => {
+        // add memory to firestore
+        addMemory(memoryTitle, photoName, photoUrl);
+        console.log('photo url:', photoUrl);
+      });
     });
   };
 
@@ -145,7 +160,7 @@ const NewMemory: React.FC = () => {
         </IonRow>
         <IonRow className='ion-margin-top'>
           <IonCol className='ion-text-center'>
-            <IonButton onClick={addMemoryHandler}>Add Memory</IonButton>
+            <IonButton disabled={disabled} onClick={addMemoryHandler}>Add Memory</IonButton>
           </IonCol>
         </IonRow>
       </IonContent>

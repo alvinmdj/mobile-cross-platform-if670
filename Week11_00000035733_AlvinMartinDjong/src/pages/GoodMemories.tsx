@@ -6,10 +6,12 @@ import {
   IonGrid,
   IonRow,
 } from '@ionic/react';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import Fab from '../components/Fab';
 import Header from '../components/Header';
 import MemoryItem from '../components/MemoryItem';
+import { db } from '../services/firebase';
 
 interface Memory {
   id: string,
@@ -19,16 +21,30 @@ interface Memory {
 }
 
 const GoodMemories: React.FC = () => {
-  const URL = 'http://localhost/crossplatform-w10/select_all_good_memory.php';
   const [goodMemories, setGoodMemories] = useState<Array<Memory>>([]);
 
+  const getMemories = async () => {
+    const memoriesRef = collection(db, 'memories');
+    const q = query(memoriesRef, where('type', '==', 'good'));
+
+    const querySnapshot = await getDocs(q);
+    console.log('querySnapshot:', querySnapshot);
+    setGoodMemories(querySnapshot.docs.map((doc) => {
+      return {
+        id: doc.id,
+        title: doc.data().title,
+        type: doc.data().type,
+        photo: doc.data().photoUrl,
+      };
+    }));
+
+    querySnapshot.forEach((doc) => {
+      console.log('doc:', doc.data());
+    });
+  }
+
   useEffect(() => {
-    fetch(URL)
-      .then(response => response.json())
-      .then(data => {
-        // console.log(data.memories);
-        setGoodMemories(data.memories);
-      });
+    getMemories();
   }, []);
 
   return (
@@ -36,7 +52,7 @@ const GoodMemories: React.FC = () => {
       <Header color='success' title='Good Memories' />
       <IonContent className='ion-padding'>
         <IonGrid>
-          {!goodMemories && (
+          {goodMemories.length === 0 && (
             <IonRow>
               <IonCol className='ion-text-center'>
                 <h2>No good memories found.</h2>
@@ -44,7 +60,11 @@ const GoodMemories: React.FC = () => {
             </IonRow>
           )}
           {goodMemories && goodMemories.map(memory => (
-            <MemoryItem memory={memory} key={memory.id} />
+            <MemoryItem
+              title={memory.title}
+              photo={memory.photo}
+              key={memory.id}
+            />
           ))}
         </IonGrid>
         {isPlatform('android') && <Fab color='success' />}
