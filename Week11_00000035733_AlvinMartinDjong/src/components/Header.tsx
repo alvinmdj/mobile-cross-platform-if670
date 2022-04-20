@@ -3,6 +3,7 @@ import {
   IonButtons,
   IonHeader,
   IonIcon,
+  IonMenuButton,
   IonTitle,
   IonToolbar,
   isPlatform
@@ -20,6 +21,9 @@ const Header = (props: HeaderProps) => {
   return (
     <IonHeader>
       <IonToolbar color={color}>
+        <IonButtons slot='start'>
+          <IonMenuButton />
+        </IonButtons>
         {!isPlatform('android') && (
           <IonButtons slot='end'>
             <IonButton routerLink='/tabs/new'>

@@ -24,6 +24,8 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import Menu from './components/Menu';
+import Students from './pages/Students';
 
 setupIonicReact();
 
@@ -31,7 +33,9 @@ const App: React.FC = () => {
   return (
     <IonApp>
       <IonReactRouter>
-        <IonRouterOutlet>
+        <Menu />
+        <IonRouterOutlet id='main'>
+          <Route path='/students' component={Students} />
           <Route path='/tabs' component={MemoryTabs} />
           <Redirect exact from='/' to='/tabs' />
         </IonRouterOutlet>
