@@ -3,12 +3,12 @@ import { initializeApp } from 'firebase/app';
 
 // firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyCMwKn0bb4HMu11ZCiAn_tH1IMVzJuZ-nA',
-  authDomain: 'mobile-cross-platform-we-43d23.firebaseapp.com',
-  projectId: 'mobile-cross-platform-we-43d23',
-  storageBucket: 'mobile-cross-platform-we-43d23.appspot.com',
-  messagingSenderId: '1026606332226',
-  appId: '1:1026606332226:web:44d13ddfb8fd15b99d30db'
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase
