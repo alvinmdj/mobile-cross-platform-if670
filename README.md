@@ -18,7 +18,7 @@ Repository for Mobile Cross Platform Programming assignments (IF670-A)
   
   Midterm exam application - Bosen Jomblo. Create a list of candidates user can swipe to add to their target list or remove their target. Contains usage of: react context, swiper.js, dark theme toggler, ionic list, ionic swiper, ionic loading, ionic action sheets, ionic toast, and other ionic stuffs.
   
-  **Live demo**: https://bosen-jomblo.vercel.app/
+  **Live demo**: [click here](https://bosen-jomblo.vercel.app/)
   
   **Note**: Open in mobile screen view for better experience.
 
@@ -26,7 +26,7 @@ Repository for Mobile Cross Platform Programming assignments (IF670-A)
   
   First assignment for the theory class, create a Joule (mobile application) clone, including the splash screen, sidebar, home page, and search page. The search page is functioning with dummy data (hint: type 'chicken').
   
-  **Live demo**: https://jouleclone.vercel.app/
+  **Live demo**: [click here](https://jouleclone.vercel.app/)
   
   **Note**: Please open it in mobile view, it's not yet optimized for large screen view :)
 
@@ -68,7 +68,7 @@ Repository for Mobile Cross Platform Programming assignments (IF670-A)
   
   **Note**: copy ```.env.example``` to ```.env.local``` and setup the google maps API key.
   
-  **Live demo**: https://ionic-camera-map-pwa.vercel.app/
+  **Live demo**: [click here](https://ionic-camera-map-pwa.vercel.app/)
 
 - **Week 10 - Fetch data from API (HTTP Request)**
 
@@ -91,21 +91,25 @@ Repository for Mobile Cross Platform Programming assignments (IF670-A)
 ## Installation
 
 - Clone this repo:
+
 ```sh
 git clone https://github.com/alvinmdj/mobile-cross-platform-if670.git
 ```
 
 - cd to root folder for specified week:
+
 ```sh
 cd mobile-cross-platform-if670/Week<xx>_000000035733_AlvinMartinDjong
 ```
 
 - Install dependencies:
+
 ```sh
 npm install
 ```
 
 - Run (development):
+
 ```sh
 ionic serve
 ```
@@ -115,21 +119,25 @@ ionic serve
 ### General
 
 - Install Ionic CLI (First Time Only):
+
 ```sh
 npm i -g @ionic/cli
 ```
 
 - Create Ionic Project:
+
 ```sh
 ionic start
 ```
 
 - Run Development Server:
+
 ```sh
 ionic serve
 ```
 
 - Create a build for web app, this command will run 'react-scripts build':
+
 ```sh
 # same as 'npm run build'
 ionic build
@@ -138,21 +146,25 @@ ionic build
 ### For Android Development
 
 - Create required file and folder for Android project:
+
 ```sh
 ionic capacitor add android
 ```
 
 - This command will run react-build script and copy the build result from Ionic-React into assets folder in the Android project:
+
 ```sh
 ionic capacitor copy android
 ```
 
 - Sync Android (use this command if you encounter error like 'could not read script capacitor.settings.gradle' when trying to open the Android project with Android Studio):
-```
+
+```sh
 ionic capacitor sync android
 ```
 
 - Open the created Android project in Android Studio:
+
 ```sh
 ionic capacitor open android
 ```
