@@ -14,7 +14,7 @@ Repository for Mobile Cross Platform Programming assignments (IF670-A)
 
 ## What's inside this repo
 
-- **UTS (midterm exam) - Bosen Jomblo**
+- **AlvinMartinDjong_00000035733_IF670_AL_UTS (midterm exam) - Bosen Jomblo**
   
   Midterm exam application - Bosen Jomblo. Create a list of candidates user can swipe to add to their target list or remove their target. Contains usage of: react context, swiper.js, dark theme toggler, ionic list, ionic swiper, ionic loading, ionic action sheets, ionic toast, and other ionic stuffs.
   
